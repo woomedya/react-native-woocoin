@@ -1,0 +1,31 @@
+export default {
+    title: 'WooCoin',
+    wellcome: "WooCoin'e Hoşgeldiniz",
+    description: "WooCoin bir kripto para sistemi değildir. WooCoin, kullanıcıların uygulama kullanarak kazandığı puan sistemidir.",
+    wallet: {
+        description1: "Uygulamalarımızda gizlediğimiz altınları uygulamanın özelliklerini kullanarak kazanın.",
+        description11: "Böylelikle WooCoin üretiminde kullanacağınız altınlar uygulamanızda birikmeye başlasın.",
+        description2: "WooCoin üretmek için gerekli enerji uygulamayı aktif tuttuğunuz sürece birikecektir.",
+        description22: "Eğer ekstra enerji kazanmak isterseniz, reklam izleyebilirsiniz.",
+        description3: "Toplamış olduğunuz altınları deponuz dolmadan enerji ile WooCoin üretiminde kullanın.",
+        description4: "WooCoin bir kripto para sistemi değildir. Kullanıcıların uygulama kullanarak kazandığı puan sistemidir.",
+        woc: "Woc",
+        gold: 'Altın',
+        storeLimit: 'Depo Limiti:',
+        key: 'Enerji',
+        generateWoc: 'Woc Üret',
+        giftKey: 'Ödül Enerji Kazan',
+        ok: 'Tamam',
+        cancel: 'İptal',
+        notEnoughGold: "Yetersiz Altın",
+        requireGold: "Woc üretmek için gerekli altın miktarı:",
+        notEnoughKey: "Yetersiz Enerji",
+        requireKey: "Woc üretmek için gerekli enerji miktarı:",
+        notEnoughKeyRight: 'Yetersiz Reklam Hakkı',
+        requireKeyRight: 'Reklam izleme hakkınız doldu bir süre bekleyiniz.',
+        awardAds: 'Ödüllü Reklam',
+        awardAdsDesc: '1 enerji almak için bu reklamı görüntüle',
+        notFoundRewardTitle: 'Reklam Bulunamadı',
+        notFoundRewardDesc: 'Gösterilebilecek reklam bulunamadı, daha sonra tekrar deneyiniz.'
+    }
+}

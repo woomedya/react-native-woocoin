@@ -1,0 +1,29 @@
+import opts from './config';
+import WocPage from './src/components/WocPage';
+import * as langStore from './src/store/language';
+import WocBackButton_ from './src/components/WocBackButton';
+import * as goldAction from './src/actions/gold';
+
+export const config = async ({ serverUrl, publicKey, privateKey, locales, lang, woouserPublicKey, applicationId }) => {
+    opts.serverUrl = serverUrl;
+    opts.publicKey = publicKey;
+    opts.privateKey = privateKey;
+    opts.applicationId = applicationId;
+    opts.woouserPublicKey = woouserPublicKey;
+
+    opts.lang = lang;
+    opts.locales = locales || {};
+
+    langStore.setLanguage(lang);
+}
+
+export const setLang = (lang) => {
+    opts.lang = lang;
+    langStore.setLanguage(lang);
+}
+
+export default WocPage;
+
+export const GoldAction = goldAction;
+
+export const WocBackButton = WocBackButton_;
