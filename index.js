@@ -4,12 +4,13 @@ import * as langStore from './src/store/language';
 import WocBackButton_ from './src/components/WocBackButton';
 import * as goldAction from './src/actions/gold';
 
-export const config = async ({ serverUrl, publicKey, privateKey, locales, lang, woouserPublicKey, applicationId }) => {
+export const config = async ({ serverUrl, publicKey, privateKey, locales, lang, woouserPublicKey, applicationId, siteUrl }) => {
     opts.serverUrl = serverUrl;
     opts.publicKey = publicKey;
     opts.privateKey = privateKey;
     opts.applicationId = applicationId;
     opts.woouserPublicKey = woouserPublicKey;
+    opts.siteUrl = siteUrl;
 
     opts.lang = lang;
     opts.locales = locales || {};

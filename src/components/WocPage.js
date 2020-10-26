@@ -5,7 +5,7 @@ import * as langStore from '../store/language';
 import * as pageStore from '../store/page';
 import WUPage from 'react-native-woomobileuser';
 import * as userStore from '../store/user';
-import Wallet from './Wallet';
+import WalletPage from '../components/WalletPage';
 
 export default class WocPage extends Component {
     constructor(props) {
@@ -50,7 +50,7 @@ export default class WocPage extends Component {
     }
 
     render() {
-        return this.state.user ? <Wallet /> : <WUPage
+        return this.state.user ? <WalletPage /> : <WUPage
             wellcome={this.state.i18n.wellcome}
             description={this.state.i18n.description} />;
     }
