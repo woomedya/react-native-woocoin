@@ -226,6 +226,9 @@ export default class Wallet extends Component {
     }
 
     render() {
+        var wocFontLength = this.state.woc.toString().length;
+        var wocFontSize = wocFontLength > 10 ? 28 : wocFontLength > 8 ? 38 : wocFontLength > 5 ? 48 : 58;
+
         return <WooadsRewardContainer ref={e => this.wooads = e}>
             <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
                 <ScrollView
@@ -238,10 +241,7 @@ export default class Wallet extends Component {
                     style={{ backgroundColor: '#FFFFFF', flex: 1 }}>
 
                     <View style={{ padding: 15 }}>
-
                         <View style={{ backgroundColor: '#F6F6F6', borderRadius: 15 }}>
-
-
                             <View style={{ flexDirection: 'row', padding: 5 }}>
                                 <View style={{ alignSelf: 'center', padding: 10 }}>
                                     <Text style={{ textAlign: 'center', color: '#4F4F4F', fontSize: 20, fontWeight: '500' }}>
@@ -262,17 +262,18 @@ export default class Wallet extends Component {
                             </View>
 
                             <View style={{ padding: 15, paddingTop: 0 }}>
-                                <View style={{ backgroundColor: '#FFCD44', minHeight: 100, borderRadius: 15, flexDirection: 'row' }}>
-                                    <View style={{ flex: 3, justifyContent: 'center', alignItems: 'flex-end' }}>
-                                        <Image resizeMode="contain" source={wocPng} style={{ height: 80, width: 80 }} />
-                                    </View>
-                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
-                                        <Text style={{ fontSize: 60, fontWeight: 'bold', color: '#4F4F4F' }}>
-                                            {this.state.woc}
+                                <View style={{ backgroundColor: '#FFCD44', minHeight: 100, borderRadius: 15, flexDirection: 'row', justifyContent: 'center' }}>
+
+                                    <View style={{ justifyContent: 'center' }}>
+                                        <Text style={{ fontSize: wocFontSize, fontWeight: 'bold', color: '#4F4F4F' }}>
+                                            {this.state.woc.toLocaleString()}
                                         </Text>
                                     </View>
-                                    <View style={{ flex: 3, justifyContent: 'center', left: 10 }}>
-                                        <Text style={{ fontSize: 24, fontWeight: '500', color: '#4F4F4F', paddingTop: 25 }}>
+                                    <View style={{ justifyContent: 'center', left: 10, alignItems: 'center' }}>
+                                        <View style={{ justifyContent: 'center' }}>
+                                            <Image resizeMode="contain" source={wocPng} style={{ height: 27, width: 55 }} />
+                                        </View>
+                                        <Text style={{ fontSize: 20, fontWeight: '500', color: '#4F4F4F' }}>
                                             {this.state.i18n.wallet.woc}
                                         </Text>
                                     </View>
