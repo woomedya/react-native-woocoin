@@ -1,13 +1,19 @@
 import * as goldApi from '../apis/gold';
 
-var actions = {};
-
-export const generateGold = async (actionKey) => {
-    actions[actionKey] = true;
-    setTimeout(() => {
+var actions = {}, timeout = null;
+export const generateGold = (actionKey) => {
+    if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+    }
+    timeout = setTimeout(async () => {
+        if (actions[actionKey])
+            return;
+        actions[actionKey] = true;
         if (actions[actionKey]) {
+            console.log(actionKey);
+            await goldApi.generateGold(actionKey);
             actions[actionKey] = false;
-            goldApi.generateGold(actionKey);
         }
     }, 5000);
 }
