@@ -11,7 +11,6 @@ export const generateGold = (actionKey) => {
             return;
         actions[actionKey] = true;
         if (actions[actionKey]) {
-            console.log(actionKey);
             await goldApi.generateGold(actionKey);
             actions[actionKey] = false;
         }
