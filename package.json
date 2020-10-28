@@ -1,6 +1,6 @@
 {
   "name": "react-native-woocoin",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "index.js",
   "devDependencies": {},
@@ -13,16 +13,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "crypto-js": "^3.1.9-1",
-    "jutore": "^1.0.0",
-    "react-native-woomobileuser": "^1.0.0",
-    "woo-crypto": "^1.0.2"
+    "jutore": "^1.0.0"
   },
-  "peerDependencies": {
-    "react": "^16.12.0",
-    "react-native": "^0.61.5",
-    "react-native-vector-icons": "^6.6.0",
-    "react-native-elements": "^1.2.7",
-    "react-native-wooads": "^1.4.0",
-    "@react-native-community/async-storage": "^1.8.1"
-  }
+  "peerDependencies": {}
 }
