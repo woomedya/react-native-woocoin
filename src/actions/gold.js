@@ -6,9 +6,11 @@ export const generateGold = async (actionKey) => {
         return;
 
     actions[actionKey] = true;
-
-    if (actions[actionKey]) {
-        await goldApi.generateGold(actionKey);
-        actions[actionKey] = false;
-    }
+    await new Promise(res => {
+        setTimeout(async () => {
+            await goldApi.generateGold(actionKey);
+            res();
+        }, 1000);
+    })
+    actions[actionKey] = false;
 }
