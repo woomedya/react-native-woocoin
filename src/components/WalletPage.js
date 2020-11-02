@@ -165,6 +165,7 @@ export default class Wallet extends Component {
                 Alert.alert(this.state.i18n.wallet.notEnoughKey,
                     this.state.i18n.wallet.requireKey + " " + this.state.equationKey,
                     [
+                        { text: this.state.i18n.wallet.info, onPress: this.showHowEarmInfo },
                         { text: this.state.i18n.wallet.ok },
                     ]);
             }
