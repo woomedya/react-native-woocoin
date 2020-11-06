@@ -121,11 +121,6 @@ export default class Wallet extends Component {
                     type: x.gold ? 'gold' : 'energy',
                     value: x.gold || x.coinKey
                 }
-            }).concat({
-                key: 'ads',
-                description: 'Reklam İzle Enerji Kazan',
-                type: 'energy',
-                value: 1
             })
         }, this.decreaseLoading);
     }
