@@ -15,12 +15,13 @@ import InfoModalContent from '../components/InfoModalContent';
 import GoldModalContent from '../components/GoldModalContent';
 import * as applicationApi from '../apis/application';
 import * as langStore from '../store/language';
+import * as wocAction from '../actions/woc';
 
 const energyPng = require('../../assets/energy.png');
 const goldPng = require('../../assets/gold.png');
 const wocPng = require('../../assets/woc.png');
 
-export default class Wallet extends Component {
+export default class WalletPage extends Component {
     constructor(props) {
         super(props);
         this.props = props;
@@ -86,6 +87,7 @@ export default class Wallet extends Component {
     refresh = async () => {
         this.settingsData();
         this.setUserData();
+        this.setActions();
     }
 
     settingsData = async () => {
@@ -147,7 +149,7 @@ export default class Wallet extends Component {
         if (this.generatingWoc == false) {
             this.generatingWoc = true;
             this.increaseLoading();
-            var code = await wocApi.generateWoc();
+            var code = await wocAction.generateWoc();
             this.refresh();
             if (code == 'notEnoughGold') {
                 Alert.alert(this.state.i18n.wallet.notEnoughGold,

@@ -56,3 +56,10 @@ export const getAdsLimit = async () => {
     // return await new Promise(res => setTimeout(() => res('ok'), 500));
     // return await new Promise(res => setTimeout(() => res('notEnoughKeyRight'), 500));
 }
+
+export const useUserWoc = async (woc) => {
+    var data = await request('/coinkeytoken/useuserwoc', 'coinkeytoken.useuserwoc', {
+        woc
+    });
+    return data || 'fail';
+}
