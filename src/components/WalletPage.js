@@ -16,6 +16,7 @@ import GoldModalContent from '../components/GoldModalContent';
 import * as applicationApi from '../apis/application';
 import * as langStore from '../store/language';
 import * as wocAction from '../actions/woc';
+import * as soundUtil from '../utilities/sound';
 
 const energyPng = require('../../assets/energy.png');
 const goldPng = require('../../assets/gold.png');
@@ -151,7 +152,9 @@ export default class WalletPage extends Component {
             this.increaseLoading();
             var code = await wocAction.generateWoc();
             this.refresh();
-            if (code == 'notEnoughGold') {
+            if (code == 'ok') {
+                soundUtil.play(soundUtil.COINS);
+            } else if (code == 'notEnoughGold') {
                 Alert.alert(this.state.i18n.wallet.notEnoughGold,
                     this.state.i18n.wallet.requireGold + " " + this.state.equationGold,
                     [
