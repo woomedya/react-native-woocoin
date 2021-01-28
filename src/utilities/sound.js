@@ -10,6 +10,8 @@ mp3[COINS] = new Sound(coinsMp3);
 
 export const play = (type) => {
     if (mp3[type]) {
+        mp3[type].stop();
+
         mp3[type].setVolume(0.3).play();
     }
 }
