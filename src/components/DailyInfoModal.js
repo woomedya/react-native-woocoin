@@ -7,6 +7,7 @@ import * as applicationApi from '../apis/application';
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import * as userStore from '../store/user';
+import * as langStore from '../store/language';
 
 const energyPng = require('../../assets/energy.png');
 const goldPng = require('../../assets/gold.png');
@@ -23,6 +24,20 @@ export default class DailyInfoModal extends Component {
             gold: 0,
             coinKey: 0
         };
+    }
+
+    componentDidMount() {
+        langStore.default.addListener(langStore.LANG, this.langChanged);
+    }
+
+    componentWillUnmount() {
+        langStore.default.removeListener(langStore.LANG, this.langChanged);
+    }
+
+    langChanged = () => {
+        this.setState({
+            i18n: i18n()
+        });
     }
 
     showInfo = async (keys) => {
@@ -53,7 +68,8 @@ export default class DailyInfoModal extends Component {
         this.setState({
             showInfo: true,
             gold,
-            coinKey
+            coinKey,
+            i18n: i18n()
         });
     }
 
