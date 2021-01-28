@@ -35,5 +35,13 @@ export default {
         whatDoesItDo: 'What Does It Do?',
         whatDoesItDoDesc: 'Visit to evaluate the points earned and more.',
         woocoincom: 'woocoin.woomedya.com.tr'
+    },
+    dailyInfo: {
+        title: 'Daily Gifts',
+        text: 'Earn gold and energy by entering the game every day.',
+        wallet: 'Go to Wallet'
+    },
+    userWocCard: {
+        woc: 'woc'
     }
 }

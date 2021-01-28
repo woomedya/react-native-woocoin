@@ -7,5 +7,6 @@ export default opts = {
     lang: 'tr',
     woouserPublicKey: '',
     tokenTimeout: 20000,
-    siteUrl: 'https://woocoin.woomedya.com.tr'
+    siteUrl: 'https://woocoin.woomedya.com.tr',
+    woocoinRouteName: "WooCoin"
 };

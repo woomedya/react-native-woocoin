@@ -35,5 +35,13 @@ export default {
         whatDoesItDo: 'Ne İşe Yarar ?',
         whatDoesItDoDesc: 'Kazanılan puanlara değerlendirmek ve daha fazlası için ziyaret edin.',
         woocoincom: 'woocoin.woomedya.com.tr'
+    },
+    dailyInfo: {
+        title: 'Günlük Hediyeler',
+        text: 'Her gün oyuna girerek gold ve enerji kazanın.',
+        wallet: 'Cüzdana Git'
+    },
+    userWocCard: {
+        woc: 'woc'
     }
 }

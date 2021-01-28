@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Image, View, Text, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import i18n from '../locales';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import config from 'react-native-woocoin/config';
+import config from '../../config';
 
 const energyPng = require('../../assets/energy.png');
 const goldPng = require('../../assets/gold.png');
