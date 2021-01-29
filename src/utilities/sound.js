@@ -13,6 +13,6 @@ export const play = (type) => {
     if (mp3[type]) {
         mp3[type].stop();
 
-        mp3[type].setVolume(Platform.OS == 'ios' ? 0.3 : 0.7).play();
+        mp3[type].setVolume(Platform.OS == 'ios' ? 0.3 : 1).play();
     }
 }
