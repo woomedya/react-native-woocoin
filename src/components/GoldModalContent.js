@@ -26,7 +26,7 @@ export default class InfoModalContent extends Component {
         var png = item.type == 'gold' ? goldPng : energyPng;
         return <View>
             <Text style={{ paddingTop: 15, fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: '300' }}>
-                {item.description}
+                {item.descriptionLang}
             </Text>
 
             <View style={{ alignItems: 'center', paddingTop: 15 }}>

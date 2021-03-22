@@ -1,9 +1,17 @@
 import { request } from './base';
+import langStore from '../store/language';
 
 export const getActions = async () => {
     var data = await request('/application/getactions', 'application.getactions', {});
-    return data || [];
 
-    // return await new Promise(res => setTimeout(() => res('ok'), 500));
-    // return await new Promise(res => setTimeout(() => res('notEnoughGoldRight'), 500));
+    var lang = langStore.getLanguage();
+
+    return (data || []).map(x => {
+        return {
+            ...x,
+            descriptionLang: x.description[lang],
+            type: x.gold ? 'gold' : 'energy',
+            value: x.gold || x.coinKey
+        };
+    });
 }
