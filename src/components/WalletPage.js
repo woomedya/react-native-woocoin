@@ -4,9 +4,6 @@ import i18n from '../locales';
 import { userAction } from 'react-native-woomobileuser';
 import * as userStore from '../store/user';
 import EntypoIcon from "react-native-vector-icons/Entypo";
-import FontAwesome5Icon from "react-native-vector-icons/FontAwesome5";
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import FeatherIcon from "react-native-vector-icons/Feather";
 import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import * as wocApi from '../apis/woc';
@@ -48,7 +45,6 @@ export default class WalletPage extends Component {
 
     componentDidMount() {
         this.refresh();
-        this.setActions();
     }
 
     showInfo = () => {

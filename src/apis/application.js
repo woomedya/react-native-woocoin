@@ -1,5 +1,5 @@
 import { request } from './base';
-import langStore from '../store/language';
+import * as langStore from '../store/language';
 
 export const getActions = async () => {
     var data = await request('/application/getactions', 'application.getactions', {});
