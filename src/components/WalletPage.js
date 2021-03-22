@@ -14,7 +14,6 @@ import { WooadsRewardContainer } from 'react-native-wooads';
 import InfoModalContent from '../components/InfoModalContent';
 import GoldModalContent from '../components/GoldModalContent';
 import * as applicationApi from '../apis/application';
-import * as langStore from '../store/language';
 import * as wocAction from '../actions/woc';
 import * as soundUtil from '../utilities/sound';
 
@@ -115,16 +114,8 @@ export default class WalletPage extends Component {
     setActions = async () => {
         this.increaseLoading();
         var actions = await applicationApi.getActions();
-        var lang = langStore.getLanguage();
         this.setState({
-            actions: actions.map(x => {
-                return {
-                    key: x.key,
-                    description: x.description[lang],
-                    type: x.gold ? 'gold' : 'energy',
-                    value: x.gold || x.coinKey
-                }
-            })
+            actions
         }, this.decreaseLoading);
     }
 
