@@ -6,10 +6,21 @@ export const getUserWoc = async () => {
     return userData.woc;
 }
 
-export const useUserWoc = async (woc) => {
-    var result = await wocApi.useUserWoc(woc);
+export const useUserWoc = async (woc, outcode) => {
+    var result = await wocApi.useUserWoc(woc, outcode);
     wocStore.setChanged();
     return result == 'ok';
+}
+
+export const sendUserWoc = async (userId, woc, outcode) => {
+    var result = await wocApi.sendUserWoc(userId, woc, outcode);
+    wocStore.setChanged();
+    return result == 'ok';
+}
+
+export const checkUserWoc = async (woc) => {
+    var result = await wocApi.checkUserWoc(woc);
+    return result;
 }
 
 export const generateWoc = async () => {

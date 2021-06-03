@@ -23,7 +23,7 @@ export default class InfoModalContent extends Component {
     }
 
     renderItem = ({ item }) => {
-        var png = item.type == 'gold' ? goldPng : energyPng;
+        var png = item.type == 'gold' ? goldPng : item.keyUsed ? wocPng : energyPng;
         return <View>
             <Text style={{ paddingTop: 15, fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: '300' }}>
                 {item.descriptionLang}
@@ -34,7 +34,7 @@ export default class InfoModalContent extends Component {
             </View>
 
             <Text style={{ fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: 'bold', paddingBottom: 20 }}>
-                {item.value} {item.type == 'gold' ? this.state.i18n.wallet.gold : this.state.i18n.wallet.key}
+                {item.value} {item.type == 'gold' ? this.state.i18n.wallet.gold : item.keyUsed ? this.state.i18n.wallet.woc : this.state.i18n.wallet.key}
             </Text>
         </View>
     }
