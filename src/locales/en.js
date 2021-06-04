@@ -34,7 +34,9 @@ export default {
         whatWooCoin: 'What is WooCoin?',
         whatDoesItDo: 'What Does It Do?',
         whatDoesItDoDesc: 'Visit to evaluate the points earned and more.',
-        woocoincom: 'woocoin.woomedya.com.tr'
+        woocoincom: 'woocoin.woomedya.com.tr',
+        send: 'Send',
+        sendFriends: 'Send woocoins to your friends.'
     },
     dailyInfo: {
         title: 'Daily Gifts',
@@ -43,5 +45,23 @@ export default {
     },
     userWocCard: {
         woc: 'woc'
+    },
+    wocSender: {
+        wocTitle: 'Woc Value',
+        woc: 'Woc Value To Send',
+        enterWoc: 'Enter woc value.',
+        usernameTitle: 'Username',
+        username: 'Username To Send',
+        enterUsername: 'Enter a username.',
+        search: 'Search User',
+        wocSendFee: 'Woc sending fee $woc woc.',
+        send: 'Send',
+        sendingToUsername: 'User to send woc:',
+        payValue: 'Amount of woc to pay:',
+        sendTitle: 'Send Woc',
+        sendMessage: '$woc woc will be sent to $username. You will pay $fee woc for sending fee.',
+        notFoundUser: 'User not found.',
+        sentSuccess: 'It was sent $woc woc to $username',
+        notEnoughWoc: 'Your woc balance is insufficient.'
     }
 }

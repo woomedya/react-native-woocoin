@@ -34,7 +34,9 @@ export default {
         whatWooCoin: 'WooCoin Nedir ?',
         whatDoesItDo: 'Ne İşe Yarar ?',
         whatDoesItDoDesc: 'Kazanılan puanlara değerlendirmek ve daha fazlası için ziyaret edin.',
-        woocoincom: 'woocoin.woomedya.com.tr'
+        woocoincom: 'woocoin.woomedya.com.tr',
+        send: 'Gönder',
+        sendFriends: 'Arkadaşlarınıza woocoin gönderin.'
     },
     dailyInfo: {
         title: 'Günlük Hediyeler',
@@ -43,5 +45,23 @@ export default {
     },
     userWocCard: {
         woc: 'woc'
+    },
+    wocSender: {
+        wocTitle: 'Woc Değeri',
+        woc: 'Gönderilecek Woc Değeri',
+        enterWoc: 'Woc değeri giriniz.',
+        usernameTitle: 'Kullanıcı Adı',
+        username: 'Gönderilecek Kullanıcı Adı',
+        enterUsername: 'Kullanıcı adı giriniz.',
+        search: 'Kullanıcı Ara',
+        wocSendFee: 'Woc gönderim ücreti $woc woc.',
+        send: 'Gönder',
+        sendingToUsername: 'Woc gönderilecek kullanıcı:',
+        payValue: 'Ödenecek woc miktarı:',
+        sendTitle: 'Woc Gönder',
+        sendMessage: '$username kullanıcısına $woc woc gönderilecektir. $fee woc gönderim ücreti ödeyeceksiniz.',
+        notFoundUser: 'Kullanıcı bulunamadı.',
+        sentSuccess: '$username kullanıcısına $woc woc gönderildi.',
+        notEnoughWoc: 'Woc bakiyeniz yetersiz.'
     }
 }

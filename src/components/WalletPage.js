@@ -13,6 +13,9 @@ import GoldModalContent from '../components/GoldModalContent';
 import * as applicationApi from '../apis/application';
 import * as wocAction from '../actions/woc';
 import * as soundUtil from '../utilities/sound';
+import * as pageStore from '../store/page';
+import { Button } from 'react-native-elements';
+import * as wocStore from '../store/woc';
 
 const energyPng = require('../../assets/energy.png');
 const goldPng = require('../../assets/gold.png');
@@ -89,6 +92,7 @@ export default class WalletPage extends Component {
     settingsData = async () => {
         this.increaseLoading();
         var settingsData = await wocApi.getSettingsData();
+        wocStore.setSendFee(settingsData.wocSendFee);
         this.setState({
             equationGold: settingsData.equationGold,
             equationWoc: settingsData.equationWoc,
@@ -204,6 +208,10 @@ export default class WalletPage extends Component {
         this.decreaseLoading();
     }
 
+    gotoWocSenderPage = () => {
+        pageStore.setPage(pageStore.PAGE_SENDER);
+    }
+
     renderEquation = () => {
         return <Text style={{ textAlign: 'center', fontSize: 14, color: '#4F4F4F', fontWeight: '200' }}>
             {this.state.equationGold + " " + this.state.i18n.wallet.gold + " + " + this.state.equationKey + " " + this.state.i18n.wallet.key + " = "}
@@ -276,8 +284,28 @@ export default class WalletPage extends Component {
                                         />
                                     </TouchableOpacity>
                                 </View>
+
+                                <View style={{ paddingTop: 15, }}>
+                                    <View style={{ borderRadius: 15 }}>
+                                        <Button
+                                            buttonStyle={{
+                                                backgroundColor: '#38ada9',
+                                                borderRadius: 15, paddingVertical: 10,
+                                            }}
+                                            title={
+                                                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                                                    <Text style={{ color: '#f5f6fa', fontWeight: '500', fontSize: 22, textAlign: 'center' }}>{this.state.i18n.wallet.send}</Text>
+                                                    <Text style={{ color: '#f5f6fa', fontSize: 14, textAlign: 'center' }}>{this.state.i18n.wallet.sendFriends}</Text>
+                                                </View>
+                                            }
+                                            onPress={this.gotoWocSenderPage}
+                                        />
+                                    </View>
+                                </View>
                             </View>
                         </View>
+
+
 
                         <View style={{ flexDirection: 'row', minHeight: 200 }}>
                             <View style={{ padding: 15, paddingRight: 7.5, flex: 1, paddingBottom: 0 }}>
@@ -353,6 +381,9 @@ export default class WalletPage extends Component {
                                 />
                             </TouchableOpacity>
                         </View>
+
+
+
                     </View>
                 </ScrollView>
 
