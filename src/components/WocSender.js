@@ -65,7 +65,7 @@ export default class WocSender extends Component {
         if (this.state.userId)
             this.send();
         else
-            this.send();
+            this.searchUser();
     }
 
     searchUser = async () => {
