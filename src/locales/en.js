@@ -33,7 +33,7 @@ export default {
         howGoldEarnDesc: 'Coins are visible and used in the application earned. Energies are common to all applications.',
         whatWooCoin: 'What is WooCoin?',
         whatDoesItDo: 'What Does It Do?',
-        whatDoesItDoDesc: 'Visit to evaluate the points earned and more.',
+        whatDoesItDoDesc: 'Visit for more.',
         woocoincom: 'woocoin.woomedya.com.tr',
         send: 'Send',
         sendFriends: 'Send woocoins to your friends.'
