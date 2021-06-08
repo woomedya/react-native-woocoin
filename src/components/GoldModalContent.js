@@ -30,7 +30,7 @@ export default class InfoModalContent extends Component {
             </Text>
 
             <View style={{ alignItems: 'center', paddingTop: 15 }}>
-                <Image resizeMode="contain" source={png} style={{ height: 40, width: 40 }} />
+                <Image resizeMode="contain" source={png} style={{ height: 40, width: item.keyUsed ? 60 : 40 }} />
             </View>
 
             <Text style={{ fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: 'bold', paddingBottom: 20 }}>

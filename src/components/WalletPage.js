@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Modal, StyleSheet, Image, View, Text, ScrollView, KeyboardAvoidingView, TouchableOpacity, Alert, RefreshControl } from 'react-native';
-import i18n from '../locales';
 import { userAction } from 'react-native-woomobileuser';
-import * as userStore from '../store/user';
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+import i18n from '../locales';
+import * as userStore from '../store/user';
 import * as wocApi from '../apis/woc';
 import { WooadsRewardContainer } from 'react-native-wooads';
 import InfoModalContent from '../components/InfoModalContent';
@@ -258,32 +260,32 @@ export default class WalletPage extends Component {
                             </View>
 
                             <View style={{ padding: 15, paddingTop: 0 }}>
-                                <View style={{ backgroundColor: '#FFCD44', minHeight: 100, borderRadius: 15, flexDirection: 'row', justifyContent: 'center' }}>
+                                <TouchableOpacity
+                                    style={{}}
+                                    onPress={this.showInfo}>
+                                    <View style={{ backgroundColor: '#FFCD44', minHeight: 100, borderRadius: 15, flexDirection: 'row', justifyContent: 'center' }}>
 
-                                    <View style={{ justifyContent: 'center' }}>
-                                        <Text style={{ fontSize: wocFontSize, fontWeight: 'bold', color: '#4F4F4F' }}>
-                                            {this.state.woc.toLocaleString()}
-                                        </Text>
-                                    </View>
-                                    <View style={{ justifyContent: 'center', left: 10, alignItems: 'center' }}>
                                         <View style={{ justifyContent: 'center' }}>
-                                            <Image resizeMode="contain" source={wocPng} style={{ height: 27, width: 55 }} />
+                                            <Text style={{ fontSize: wocFontSize, fontWeight: 'bold', color: '#4F4F4F' }}>
+                                                {this.state.woc.toLocaleString()}
+                                            </Text>
                                         </View>
-                                        <Text style={{ fontSize: 20, fontWeight: '500', color: '#4F4F4F' }}>
-                                            {this.state.i18n.wallet.woc}
-                                        </Text>
-                                    </View>
+                                        <View style={{ justifyContent: 'center', left: 10, alignItems: 'center' }}>
+                                            <View style={{ justifyContent: 'center' }}>
+                                                <Image resizeMode="contain" source={wocPng} style={{ height: 27, width: 55 }} />
+                                            </View>
+                                            <Text style={{ fontSize: 20, fontWeight: '500', color: '#4F4F4F' }}>
+                                                {this.state.i18n.wallet.woc}
+                                            </Text>
+                                        </View>
 
-                                    <TouchableOpacity
-                                        style={{ position: 'absolute', left: 5, top: 5 }}
-                                        onPress={this.showInfo}>
-                                        <AntDesignIcon
-                                            name="infocirlce"
-                                            style={{ color: "#4F4F4F", padding: 5 }}
-                                            size={23}
+                                        <FontAwesome
+                                            name="question-circle"
+                                            style={{ position: 'absolute', left: 5, top: 5, color: "#4F4F4F", padding: 5 }}
+                                            size={27}
                                         />
-                                    </TouchableOpacity>
-                                </View>
+                                    </View>
+                                </TouchableOpacity>
 
                                 <View style={{ paddingTop: 15, }}>
                                     <View style={{ borderRadius: 15 }}>
@@ -374,10 +376,10 @@ export default class WalletPage extends Component {
                                     {this.state.i18n.wallet.howGoldEarnTitle}
                                 </Text>
 
-                                <AntDesignIcon
-                                    name="infocirlce"
+                                <FontAwesome
+                                    name="question-circle"
                                     style={{ color: "#FFCD44", paddingTop: 7 }}
-                                    size={23}
+                                    size={30}
                                 />
                             </TouchableOpacity>
                         </View>
@@ -393,7 +395,11 @@ export default class WalletPage extends Component {
                     transparent={false}
                     visible={this.state.showInfo}
                     onRequestClose={() => { }}>
-                    <InfoModalContent onClose={this.hideInfo} />
+                    <InfoModalContent onClose={this.hideInfo} actions={this.state.actions} 
+                        equationGold={this.state.equationGold}
+                        equationKey={this.state.equationKey}
+                        equationWoc={this.state.equationWoc}
+                    />
                 </Modal>
 
                 <Modal

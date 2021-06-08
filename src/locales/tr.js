@@ -33,10 +33,11 @@ export default {
         howGoldEarnDesc: 'Altınlar kazanılan uygulamada görünür ve kullanılır. Enerjiler tüm uygulamalarda ortaktır.',
         whatWooCoin: 'WooCoin Nedir ?',
         whatDoesItDo: 'Ne İşe Yarar ?',
-        whatDoesItDoDesc: 'Daha fazlası için ziyaret edin.',
+        whatDoesItDoDesc: 'WooCoin entegre edilmiş uygulamalardaki özellikler için kullanılır. Daha fazlası için ziyaret edin.',
         woocoincom: 'woocoin.woomedya.com.tr',
         send: 'Gönder',
-        sendFriends: 'Arkadaşlarınıza woocoin gönderin.'
+        sendFriends: 'Arkadaşlarınıza woocoin gönderin.',
+        actionsTitle: 'Altın ve Enerji'
     },
     dailyInfo: {
         title: 'Günlük Hediyeler',

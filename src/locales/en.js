@@ -33,10 +33,11 @@ export default {
         howGoldEarnDesc: 'Coins are visible and used in the application earned. Energies are common to all applications.',
         whatWooCoin: 'What is WooCoin?',
         whatDoesItDo: 'What Does It Do?',
-        whatDoesItDoDesc: 'Visit for more.',
+        whatDoesItDoDesc: 'Used for features in WooCoin integrated apps. Visit for more.',
         woocoincom: 'woocoin.woomedya.com.tr',
         send: 'Send',
-        sendFriends: 'Send woocoins to your friends.'
+        sendFriends: 'Send woocoins to your friends.',
+        actionsTitle: 'Gold and Energy'
     },
     dailyInfo: {
         title: 'Daily Gifts',

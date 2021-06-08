@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, View, Text, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, Image, View, Text, ScrollView, TouchableOpacity, Linking, FlatList } from 'react-native';
 import i18n from '../locales';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import config from '../../config';
@@ -20,6 +20,36 @@ export default class InfoModalContent extends Component {
 
     goWooCoinWebSite() {
         Linking.openURL(config.siteUrl);
+    }
+
+    renderKey = item => {
+        return item.key;
+    }
+
+    renderItem = ({ item }) => {
+        var png = item.type == 'gold' ? goldPng : item.keyUsed ? wocPng : energyPng;
+        return <View>
+            <Text style={{ paddingTop: 15, fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: '300' }}>
+                {item.descriptionLang}
+            </Text>
+
+            <View style={{ alignItems: 'center', paddingTop: 15 }}>
+                <Image resizeMode="contain" source={png} style={{ height: 40, width: item.keyUsed ? 60 : 40 }} />
+            </View>
+
+            <Text style={{ fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: 'bold', paddingBottom: 20 }}>
+                {item.value} {item.type == 'gold' ? this.state.i18n.wallet.gold : item.keyUsed ? this.state.i18n.wallet.woc : this.state.i18n.wallet.key}
+            </Text>
+        </View>
+    }
+
+    renderEquation = () => {
+        return <Text style={{ textAlign: 'center', fontSize: 14, color: '#4F4F4F', fontWeight: '200' }}>
+            {this.props.equationGold + " " + this.state.i18n.wallet.gold + " + " + this.props.equationKey + " " + this.state.i18n.wallet.key + " = "}
+            <Text style={{ fontWeight: 'bold' }}>
+                {" " + this.props.equationWoc + " " + this.state.i18n.wallet.woc}
+            </Text>
+        </Text>;
     }
 
     render() {
@@ -79,6 +109,8 @@ export default class InfoModalContent extends Component {
                     <Image resizeMode="contain" source={wocPng} style={{ height: 40, width: 60 }} />
                 </View>
 
+                {this.renderEquation()}
+
                 <View style={{ alignSelf: 'center', paddingTop: 15 }}>
                     <Text style={{ textAlign: 'center', color: '#4F4F4F', fontSize: 24, fontWeight: '500' }}>
                         {this.state.i18n.wallet.whatDoesItDo}
@@ -95,6 +127,22 @@ export default class InfoModalContent extends Component {
                         {this.state.i18n.wallet.woocoincom}
                     </Text>
                 </TouchableOpacity>
+
+                <View style={{ alignSelf: 'center', paddingTop: 15 }}>
+                    <Text style={{ textAlign: 'center', color: '#4F4F4F', fontSize: 24, fontWeight: '500' }}>
+                        {this.state.i18n.wallet.actionsTitle}
+                    </Text>
+                </View>
+
+                <Text style={{ paddingTop: 15, fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: '300' }}>
+                    {this.state.i18n.wallet.howGoldEarnDesc}
+                </Text>
+
+                <FlatList
+                    data={this.props.actions}
+                    renderItem={this.renderItem}
+                    keyExtractor={this.renderKey}
+                />
             </ScrollView>
         </View>
     }
