@@ -201,9 +201,9 @@ export default class WocSender extends Component {
                                     {this.state.i18n.wocSender.sendingToUsername}
                                     <Text numberOfLines={1} style={{ fontWeight: 'bold' }}> {this.state.username}</Text>
                                 </ListItem.Title>
-                                <ListItem.Subtitle Title style={{ color: '#636e72', fontSize: 14, fontWeight: '400' }}>
+                                <ListItem.Subtitle style={{ color: '#636e72', fontSize: 14, fontWeight: '400' }}>
                                     {this.state.i18n.wocSender.payValue}
-                                    <Text numberOfLines={1} style={{ fontWeight: 'bold' }}> {this.state.woc}</Text>
+                                    <Text numberOfLines={1} style={{ fontWeight: 'bold' }}> {this.state.woc + wocStore.getSendFee(this.state.woc)}</Text>
                                 </ListItem.Subtitle>
                             </ListItem>
                         </View> : null
