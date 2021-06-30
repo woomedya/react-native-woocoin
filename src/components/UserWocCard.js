@@ -19,8 +19,6 @@ export default class UserWocCard extends Component {
             user: userStore.getUser(),
             woc: 0
         };
-
-        this.request = false;
     }
 
     componentDidMount() {
@@ -45,15 +43,9 @@ export default class UserWocCard extends Component {
     }
 
     refresh = async () => {
-        if (this.request)
-            return;
-
         if (this.state.user) {
-            this.request = true;
             this.setState({
                 woc: await wocAction.getUserWoc()
-            }, () => {
-                this.request = false;
             });
         }
     }

@@ -1,12 +1,28 @@
 import { request } from './base';
 
+let getUserDataWorking = false;
 export const getUserData = async () => {
-    var data = await request('/user/getuserdata', 'user.getuserdata');
-    return data || {
-        keys: 0,
-        gold: 0,
-        woc: 0,
-    };
+    let promiseRes = null;
+    if (getUserDataWorking) {
+        return await new Promise(async res => {
+            if (getUserDataWorking) {
+                promiseRes = res;
+            } else {
+                res(await getUserData());
+            }
+        });
+    } else {
+        getUserDataWorking = true;
+        var data = await request('/user/getuserdata', 'user.getuserdata');
+        let result = data || {
+            keys: 0,
+            gold: 0,
+            woc: 0,
+        };
+        getUserDataWorking = false;
+        if (promiseRes) promiseRes(result);
+        return result;
+    }
 
     // return await new Promise(res => setTimeout(() => res({
     //     keys: 3,
