@@ -51,7 +51,6 @@ export default class UserWocCard extends Component {
     }
 
     openWooCoin = () => {
-        this.refresh();
         this.props.navigation.navigate(opts.woocoinRouteName);
     }
 

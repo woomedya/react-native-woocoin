@@ -46,6 +46,8 @@ export default class WalletPage extends Component {
             showHowEarmInfo: false,
             actions: []
         };
+
+        this.loading = 0;
     }
 
     componentDidMount() {
@@ -86,13 +88,15 @@ export default class WalletPage extends Component {
     }
 
     refresh = async () => {
-        this.settingsData();
-        this.setUserData();
-        this.setActions();
+        await this.increaseLoading();
+        await this.settingsData();
+        await this.setUserData();
+        await this.setActions();
+        await this.decreaseLoading();
     }
 
     settingsData = async () => {
-        this.increaseLoading();
+        await this.increaseLoading();
         var settingsData = await wocApi.getSettingsData();
         wocStore.setSendFee(settingsData.wocSendFee);
         this.setState({
@@ -100,53 +104,60 @@ export default class WalletPage extends Component {
             equationWoc: settingsData.equationWoc,
             chestWeight: settingsData.chestWeight,
             giftChest: settingsData.giftChest,
-        }, this.decreaseLoading);
+        });
+        await this.decreaseLoading();
     }
 
     setUserData = async () => {
-        this.increaseLoading();
+        await this.increaseLoading();
         var userData = await wocApi.getUserData();
         this.setState({
             keys: userData.keys,
             gold: userData.gold,
             woc: userData.woc,
-        }, this.decreaseLoading);
+        });
+        await this.decreaseLoading();
     }
 
     setActions = async () => {
-        this.increaseLoading();
+        await this.increaseLoading();
         var actions = await applicationApi.getActions();
         this.setState({
             actions
-        }, this.decreaseLoading);
+        });
+        await this.decreaseLoading();
     }
 
     getStoreLimit = () => {
         return this.state.chestWeight * (this.state.keys + this.state.giftChest);
     }
 
-    increaseLoading = () => {
-        this.state.loading += 1;
-        this.setState({
-            loading: this.state.loading
+    increaseLoading = async () => {
+        this.loading += 1;
+        await new Promise(res => {
+            this.setState({
+                loading: this.loading
+            }, res);
         });
     }
 
-    decreaseLoading = () => {
-        this.state.loading -= 1;
-        this.setState({
-            loading: this.state.loading
+    decreaseLoading = async () => {
+        this.loading -= 1;
+        await new Promise(res => {
+            this.setState({
+                loading: this.loading
+            }, res);
         });
     }
 
     generateWoc = async () => {
         if (this.generatingWoc == false) {
             this.generatingWoc = true;
-            this.increaseLoading();
+            await this.increaseLoading();
             var code = await wocAction.generateWoc();
-            this.refresh();
             if (code == 'ok') {
                 soundUtil.play(soundUtil.COINS);
+                await this.refresh();
             } else if (code == 'notEnoughGold') {
                 Alert.alert(this.state.i18n.wallet.notEnoughGold,
                     this.state.i18n.wallet.requireGold + " " + this.state.equationGold,
@@ -162,8 +173,8 @@ export default class WalletPage extends Component {
                         { text: this.state.i18n.wallet.ok },
                     ]);
             }
-            this.decreaseLoading();
             this.generatingWoc = false;
+            await this.decreaseLoading();
         }
     }
 
@@ -395,7 +406,7 @@ export default class WalletPage extends Component {
                     transparent={false}
                     visible={this.state.showInfo}
                     onRequestClose={() => { }}>
-                    <InfoModalContent onClose={this.hideInfo} actions={this.state.actions} 
+                    <InfoModalContent onClose={this.hideInfo} actions={this.state.actions}
                         equationGold={this.state.equationGold}
                         equationKey={this.state.equationKey}
                         equationWoc={this.state.equationWoc}
