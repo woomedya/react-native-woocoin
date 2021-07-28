@@ -2,6 +2,8 @@ import * as storeUtil from 'jutore';
 
 export const PAGE_WALLET = 'wallet';
 export const PAGE_SENDER = 'sender';
+export const PAGE_INVITE = 'invite';
+export const PAGE_SCAN_QR = 'scanqr';
 
 var store = storeUtil.setScope('woocoin_page', {
     page: PAGE_WALLET

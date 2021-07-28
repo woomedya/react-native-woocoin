@@ -3,6 +3,7 @@ export default opts = {
     publicKey: '',
     privateKey: '',
     applicationId: '',
+    deviceId: '',
     locales: {},
     lang: 'tr',
     woouserPublicKey: '',

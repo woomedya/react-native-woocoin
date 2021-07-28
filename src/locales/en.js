@@ -37,7 +37,11 @@ export default {
         woocoincom: 'woocoin.woomedya.com.tr',
         send: 'Send',
         sendFriends: 'Send woocoins to your friends.',
-        actionsTitle: 'Gold and Energy'
+        actionsTitle: 'Gold and Energy',
+        invite: 'Invite',
+        inviteText: 'Earn woocoins with your friends.',
+        qrpage: 'Scan QR Code',
+        qrpageText: 'Earn woocoins with your friends.'
     },
     dailyInfo: {
         title: 'Daily Gifts',
@@ -64,5 +68,20 @@ export default {
         notFoundUser: 'User not found.',
         sentSuccess: 'It was sent $woc woc to $username',
         notEnoughWoc: 'Your woc balance is insufficient.'
+    },
+    invite: {
+        invitationQR: 'QR Invitation',
+        inviteFriends: 'Earn WooCoins by inviting your friends. WooCoins are earned for each invitation.',
+        howToWork: 'Every friend who downloads the application, after opening an account, reads this QR code which belongs to you, and earns WooCoin for both you and himself/herself.',
+        wocCount: 'WooCoin Gift'
+    },
+    scanQRPage: {
+        waiting: 'The process is being checked.',
+        success: 'Gift WooCoins has been added to your account.',
+        already: 'The QR code has already been entered in your account or device. You can earn WooCoins by inviting your friends.',
+        fail: 'Click to try again.',
+        scanInvitationQR: 'Scan QR Invitation',
+        scanFriendsQR: 'By scanning the QR invitation, you and your friend can earn WooCoin once.',
+        earnWocTimeout: 'You cannot repeatedly QR scans. See the waiting time on the gold and energy information screen on the WooCoin page.'
     }
 }

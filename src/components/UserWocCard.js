@@ -6,6 +6,7 @@ import * as wocAction from '../actions/woc';
 import { numeralFormat } from '../utilities/number';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as wocStore from '../store/woc';
+import * as cacheStore from '../store/cache';
 import opts from '../../config';
 
 const wocPng = require('../../assets/woc.png');
@@ -14,22 +15,37 @@ export default class UserWocCard extends Component {
     constructor(props) {
         super(props);
 
+        let cache = cacheStore.getWocCard();
+
         this.state = {
             i18n: i18n(),
             user: userStore.getUser(),
-            woc: 0
+            woc: cache.woc || 0,
+            initial: cache.initial || false
         };
     }
 
     componentDidMount() {
-        this.refresh();
+        if (this.state.initial == false)
+            this.refresh();
+
         userStore.default.addListener(userStore.USER, this.userChanged);
         wocStore.default.addListener(wocStore.WOC_CHANGED, this.wocChanged);
+        cacheStore.default.addListener(cacheStore.WOC_CARD, this.cacheChanged);
     }
 
     componentWillUnmount() {
         userStore.default.removeListener(userStore.USER, this.userChanged);
         wocStore.default.removeListener(wocStore.WOC_CHANGED, this.wocChanged);
+        cacheStore.default.removeListener(cacheStore.WOC_CARD, this.cacheChanged);
+    }
+
+    cacheChanged = () => {
+        let cache = cacheStore.getWocCard();
+
+        this.setState({
+            woc: cache.woc || 0
+        });
     }
 
     userChanged = () => {
@@ -44,8 +60,17 @@ export default class UserWocCard extends Component {
 
     refresh = async () => {
         if (this.state.user) {
+            let woc = await wocAction.getUserWoc();
+            let initial = true;
+
             this.setState({
-                woc: await wocAction.getUserWoc()
+                woc,
+                initial
+            });
+
+            cacheStore.setWocCard({
+                woc,
+                initial
             });
         }
     }

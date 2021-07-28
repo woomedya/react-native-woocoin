@@ -17,7 +17,23 @@ export const generateGold = async (actionKey, params) => {
     return code == 'ok';
 }
 
-export const checkTimeout = async (actionKey) => {
-    let code = await goldApi.checkTimeout(actionKey);
+export const checkTimeout = async (actionKey, userId, params) => {
+    let code = await goldApi.checkTimeout(actionKey, userId, params);
     return code == 'ok';
+}
+
+export const checkInvitationWoc = async (userId) => {
+    return await checkTimeout('invitation', userId);
+}
+
+export const generateInvitationWoc = async (giftWoc) => {
+    return await generateGold('invitation', { woc: giftWoc });
+}
+
+export const checkInvitationConfirmWoc = async (deviceId, invitationId) => {
+    return await checkTimeout('invitation.confirm', null, { deviceId, invitationId });
+}
+
+export const generateInvitationConfirmWoc = async (giftWoc, deviceId, invitationId) => {
+    return await generateGold('invitation.confirm', { woc: giftWoc, deviceId, invitationId });
 }

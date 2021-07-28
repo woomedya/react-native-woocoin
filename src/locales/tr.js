@@ -37,7 +37,11 @@ export default {
         woocoincom: 'woocoin.woomedya.com.tr',
         send: 'Gönder',
         sendFriends: 'Arkadaşlarınıza woocoin gönderin.',
-        actionsTitle: 'Altın ve Enerji'
+        actionsTitle: 'Altın ve Enerji',
+        invite: 'Davet Et',
+        inviteText: 'Arkadaşlarınızla woocoin kazanın.',
+        qrpage: 'Kare Kod Okut',
+        qrpageText: 'Arkadaşlarınızla woocoin kazanın.'
     },
     dailyInfo: {
         title: 'Günlük Hediyeler',
@@ -64,5 +68,20 @@ export default {
         notFoundUser: 'Kullanıcı bulunamadı.',
         sentSuccess: '$username kullanıcısına $woc woc gönderildi.',
         notEnoughWoc: 'Woc bakiyeniz yetersiz.'
+    },
+    invite: {
+        invitationQR: 'Kare Kod Davetiyesi',
+        inviteFriends: 'Arkadaşlarınızı davet ederek WooCoin kazanın. Her davetiye için WooCoin kazanılır.',
+        howToWork: 'Uygulamayı indiren her arkadaşınız, hesap açtıktan sonra size ait olan bu kare kodu okutarak, hem size hem de kendisine WooCoin kazandırır.',
+        wocCount: 'WooCoin Hediyesi'
+    },
+    scanQRPage: {
+        waiting: 'İşlem kontrol ediliyor.',
+        success: 'Hesabınıza hediye WooCoin\'ler yüklendi.',
+        already: 'Hesabınıza veya cihazınıza kare kod zaten girilmiş. Arkadaşlarınızı davet ederek WooCoin kazanabilirsiniz.',
+        fail: 'Tekrar denemek için tıklayınız.',
+        scanInvitationQR: 'Kare Kod Davetiyesi Okut',
+        scanFriendsQR: 'Kare kod davetiyesi okutarak siz ve arkadaşınız bir defa WooCoin kazanabilirsiniz.',
+        earnWocTimeout: 'Peşpeşe kare kod okutması yapamazsınız. WooCoin sayfasındaki altın ve enerji bilgi ekranında bekleme süresine bakınız.'
     }
 }
