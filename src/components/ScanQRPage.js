@@ -132,6 +132,9 @@ export default class ScanQRPage extends Component {
                 this.state.qrAvailable ? <View style={{ paddingTop: 0, flexDirection: 'row', justifyContent: 'center' }}>
                     <View style={{ paddingTop: 0 }}>
                         <QRCodeScanner
+                            containerStyle={{ flexDirection: 'row', justifyContent: 'center' }}
+                            cameraStyle={{ height: 250, width: 250 }}
+                            cameraProps={{ ratio: '1:1' }}
                             onRead={this.onReadQR}
                         />
 
