@@ -1,4 +1,5 @@
 import { request } from './base';
+import * as userStore from '../store/user';
 
 let getUserDataWorking = false;
 export const getUserData = async () => {
@@ -12,8 +13,13 @@ export const getUserData = async () => {
             }
         });
     } else {
-        getUserDataWorking = true;
+        var jwt = userStore.getToken();
+        getUserDataWorking = true && jwt;
         var data = await request('/user/getuserdata', 'user.getuserdata');
+        if (data == undefined) {
+            getUserDataWorking = false;
+            data = await getUserData();
+        }
         let result = data || {
             keys: 0,
             gold: 0,
