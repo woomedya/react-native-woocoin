@@ -4,8 +4,10 @@ import * as userStore from '../store/user';
 let getUserDataWorking = false;
 export const getUserData = async () => {
     if (getUserDataWorking) {
-        return await new Promise(async res => {
-            res(await getUserData());
+        return await new Promise(res => {
+            setTimeout(async () => {
+                res(await getUserData());
+            }, 100);
         });
     } else {
         var jwt = userStore.getToken();
