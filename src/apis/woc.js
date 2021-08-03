@@ -1,15 +1,11 @@
 import { request } from './base';
 import * as userStore from '../store/user';
 
-let getUserDataWorking = false, promiseRes = [];
+let getUserDataWorking = false;
 export const getUserData = async () => {
     if (getUserDataWorking) {
         return await new Promise(async res => {
-            if (getUserDataWorking) {
-                promiseRes.push(res);
-            } else {
-                res(await getUserData());
-            }
+            res(await getUserData());
         });
     } else {
         var jwt = userStore.getToken();
@@ -25,16 +21,6 @@ export const getUserData = async () => {
             woc: 0,
         };
         getUserDataWorking = false;
-        let recurRes = () => {
-            if (promiseRes.length) {
-                let res = promiseRes.pop();
-                if (res) {
-                    res(result);
-                    recurRes();
-                }
-            }
-        }
-        recurRes();
         return result;
     }
 }
