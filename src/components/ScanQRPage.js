@@ -138,18 +138,6 @@ export default class ScanQRPage extends Component {
                             cameraStyle={{ height: 250, width: 250 }}
                             cameraProps={{ ratio: '1:1' }}
                         />
-
-                        <Text style={{ paddingTop: 15, fontSize: 14, textAlign: 'center', color: '#353b48' }}>
-                            {this.state.i18n.invite.wocCount}
-                        </Text>
-
-                        <View style={{ alignItems: 'center', paddingTop: 10 }}>
-                            <Image resizeMode="contain" source={wocPng} style={{ height: 40, width: 100 }} />
-                        </View>
-
-                        <Text style={{ fontSize: 18, textAlign: 'center', color: '#4F4F4F', paddingBottom: 20 }}>
-                            {this.state.inviteConfirmWocGift} {this.state.i18n.wallet.woc}
-                        </Text>
                     </View>
                 </View> :
                     <View style={{ padding: 16 }}>
@@ -192,6 +180,22 @@ export default class ScanQRPage extends Component {
                         }
                     </View>
             }
+
+            <View style={{ paddingTop: 0, flexDirection: 'row', justifyContent: 'center' }}>
+                <View style={{ paddingTop: 0 }}>
+                    <Text style={{ paddingTop: 15, fontSize: 14, textAlign: 'center', color: '#353b48' }}>
+                        {this.state.i18n.invite.wocCount}
+                    </Text>
+
+                    <View style={{ alignItems: 'center', paddingTop: 10 }}>
+                        <Image resizeMode="contain" source={wocPng} style={{ height: 40, width: 100 }} />
+                    </View>
+
+                    <Text style={{ fontSize: 18, textAlign: 'center', color: '#4F4F4F', paddingBottom: 20 }}>
+                        {this.state.inviteConfirmWocGift} {this.state.i18n.wallet.woc}
+                    </Text>
+                </View>
+            </View>
 
         </ScrollView>
     }
