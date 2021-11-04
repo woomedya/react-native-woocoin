@@ -104,7 +104,7 @@ export default class DailyInfoModal extends Component {
                     <TouchableWithoutFeedback
                         style={{ position: 'absolute', zIndex: 999, right: 10, top: 10 }}
                         onPress={this.hideInfo}>
-                        <View style={{ padding: 5, backgroundColor: '#e74c3c', alignSelf: 'flex-end', borderRadius: 16 }}>
+                        <View style={{ padding: 5, right: 10, backgroundColor: '#e74c3c', alignSelf: 'flex-end', borderRadius: 16 }}>
                             <MaterialIcons
                                 size={16}
                                 name="close"

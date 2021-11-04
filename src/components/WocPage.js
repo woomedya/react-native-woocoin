@@ -20,6 +20,8 @@ export default class WocPage extends Component {
             page: pageStore.getPage(),
             user: userStore.getUser()
         };
+
+        this.wallet = null;
     }
 
     componentDidMount() {
@@ -55,7 +57,7 @@ export default class WocPage extends Component {
     render() {
         var page = this.state.page;
         return this.state.user ?
-            (page == pageStore.PAGE_WALLET ? <WalletPage /> :
+            (page == pageStore.PAGE_WALLET ? <WalletPage ref={r => this.wallet = r} /> :
                 page == pageStore.PAGE_SENDER ? <WocSenderPage /> :
                     page == pageStore.PAGE_INVITE ? <InvitePage /> :
                         page == pageStore.PAGE_SCAN_QR ? <ScanQRPage /> : null)
