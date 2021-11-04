@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, StyleSheet, Image, View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { Modal, StyleSheet, Image, View, Text, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import i18n from '../locales';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import opts from '../../config';
@@ -101,7 +101,7 @@ export default class DailyInfoModal extends Component {
                         padding: 30, paddingHorizontal: 20,
                         backgroundColor: "white", borderRadius: 20, shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5
                     }}>
-                    <TouchableOpacity
+                    <TouchableWithoutFeedback
                         style={{ position: 'absolute', zIndex: 999, right: 10, top: 10 }}
                         onPress={this.hideInfo}>
                         <View style={{ padding: 5, backgroundColor: '#e74c3c', alignSelf: 'flex-end', borderRadius: 16 }}>
@@ -111,7 +111,7 @@ export default class DailyInfoModal extends Component {
                                 color="#FFFFFF"
                             />
                         </View>
-                    </TouchableOpacity>
+                    </TouchableWithoutFeedback>
 
                     <View style={{ alignSelf: 'center', paddingTop: 0 }}>
                         <Text style={{ textAlign: 'center', color: '#4F4F4F', fontSize: 24, fontWeight: '500' }}>
@@ -125,7 +125,7 @@ export default class DailyInfoModal extends Component {
 
                     <View style={{ flexDirection: 'row', minHeight: 200 }}>
                         <View style={{ padding: 10, paddingRight: 7.5, flex: 1, paddingBottom: 0 }}>
-                            <TouchableOpacity
+                            <TouchableWithoutFeedback
                                 style={{ flex: 1 }}
                                 onPress={this.openWooCoin}>
                                 <View style={{ flex: 1, borderRadius: 15, borderColor: '#F6F6F6', borderWidth: 2 }}>
@@ -147,10 +147,10 @@ export default class DailyInfoModal extends Component {
                                         <Text style={{ textAlign: 'center', bottom: 10, color: '#4F4F4F', fontSize: 12, fontWeight: '200' }}>{this.state.i18n.dailyInfo.wallet}</Text>
                                     </View>
                                 </View>
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
                         </View>
                         <View style={{ padding: 10, paddingLeft: 7.5, flex: 1, paddingBottom: 0 }}>
-                            <TouchableOpacity
+                            <TouchableWithoutFeedback
                                 style={{ flex: 1 }}
                                 onPress={this.openWooCoin}>
                                 <View style={{ flex: 1, borderRadius: 15, borderColor: '#F6F6F6', borderWidth: 2 }}>
@@ -172,7 +172,7 @@ export default class DailyInfoModal extends Component {
                                         <Text style={{ textAlign: 'center', bottom: 10, color: '#4F4F4F', fontSize: 12, fontWeight: '200' }}>{this.state.i18n.dailyInfo.wallet}</Text>
                                     </View>
                                 </View>
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
                         </View>
                     </View>
                 </View>

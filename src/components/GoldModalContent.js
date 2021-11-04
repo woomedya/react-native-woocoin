@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Image, View, Text, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import i18n from '../locales';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { FlatList } from 'react-native-gesture-handler';
@@ -42,7 +42,7 @@ export default class InfoModalContent extends Component {
     render() {
         return <View
             style={{ marginTop: 30, margin: 20, backgroundColor: "white", borderRadius: 20, paddingTop: 10, paddingBottom: 25, shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.25, shadowRadius: 3.84, elevation: 5, height: "90%" }}>
-            <TouchableOpacity
+            <TouchableWithoutFeedback
                 style={{ position: 'absolute', zIndex: 999, right: 10, top: 10 }}
                 onPress={this.props.onClose}>
                 <View style={{ padding: 5, backgroundColor: '#e74c3c', alignSelf: 'flex-end', borderRadius: 16 }}>
@@ -52,7 +52,7 @@ export default class InfoModalContent extends Component {
                         color="#FFFFFF"
                     />
                 </View>
-            </TouchableOpacity>
+            </TouchableWithoutFeedback>
 
             <ScrollView
                 style={{ backgroundColor: '#FFFFFF', borderRadius: 20, flex: 1, paddingHorizontal: 20 }}>

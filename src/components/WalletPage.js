@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, StyleSheet, Image, View, Text, ScrollView, KeyboardAvoidingView, TouchableOpacity, Alert, RefreshControl } from 'react-native';
+import { Modal, StyleSheet, Image, View, Text, ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Alert, RefreshControl } from 'react-native';
 import { userAction } from 'react-native-woomobileuser';
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import AntDesignIcon from "react-native-vector-icons/AntDesign";
@@ -47,7 +47,7 @@ export default class WalletPage extends Component {
             chestWeight: cache.chestWeight || 0,
             giftChest: cache.giftChest || 0,
             inviteWocGift: cache.inviteWocGift || 0,
-            inviteConfirmWocGift: cache.inviteConfirmWocGift || 0,
+            inviteConfirmWocGift: cache.inviteConfirmWocGift || 0,
             showInfo: false,
             showHowEarmInfo: false,
             actions: cache.actions || [],
@@ -293,19 +293,19 @@ export default class WalletPage extends Component {
                                 </View>
 
                                 <View style={{ flex: 1, alignItems: 'flex-end', padding: 5 }}>
-                                    <TouchableOpacity
+                                    <TouchableWithoutFeedback
                                         onPress={this.logout}>
                                         <EntypoIcon
                                             name="log-out"
                                             style={{ color: "#4F4F4F", padding: 5 }}
                                             size={22}
                                         />
-                                    </TouchableOpacity>
+                                    </TouchableWithoutFeedback>
                                 </View>
                             </View>
 
                             <View style={{ padding: 15, paddingTop: 0 }}>
-                                <TouchableOpacity
+                                <TouchableWithoutFeedback
                                     style={{}}
                                     onPress={this.showInfo}>
                                     <View style={{ backgroundColor: '#FFCD44', minHeight: 100, borderRadius: 15, flexDirection: 'row', justifyContent: 'center' }}>
@@ -330,13 +330,13 @@ export default class WalletPage extends Component {
                                             size={27}
                                         />
                                     </View>
-                                </TouchableOpacity>
+                                </TouchableWithoutFeedback>
                             </View>
                         </View>
 
                         <View style={{ flexDirection: 'row', minHeight: 200 }}>
                             <View style={{ padding: 15, paddingRight: 7.5, flex: 1, paddingBottom: 0 }}>
-                                <TouchableOpacity
+                                <TouchableWithoutFeedback
                                     style={{ flex: 1 }}
                                     onPress={this.generateWoc}>
                                     <View style={{ flex: 1, borderRadius: 15, borderColor: '#F6F6F6', borderWidth: 2 }}>
@@ -362,10 +362,10 @@ export default class WalletPage extends Component {
                                             </Text>
                                         </View>
                                     </View>
-                                </TouchableOpacity>
+                                </TouchableWithoutFeedback>
                             </View>
                             <View style={{ padding: 15, paddingLeft: 7.5, flex: 1, paddingBottom: 0 }}>
-                                <TouchableOpacity
+                                <TouchableWithoutFeedback
                                     style={{ flex: 1 }}
                                     onPress={this.showAdsNotify}>
                                     <View style={{ flex: 1, borderRadius: 15, borderColor: '#F6F6F6', borderWidth: 2 }}>
@@ -388,12 +388,12 @@ export default class WalletPage extends Component {
                                         </View>
                                     </View>
 
-                                </TouchableOpacity>
+                                </TouchableWithoutFeedback>
                             </View>
                         </View>
 
                         <View >
-                            <TouchableOpacity onPress={this.showHowEarmInfo}
+                            <TouchableWithoutFeedback onPress={this.showHowEarmInfo}
                                 style={{ padding: 10, top: 5, alignSelf: 'center', alignItems: 'center' }}>
                                 {this.renderEquation()}
 
@@ -406,7 +406,7 @@ export default class WalletPage extends Component {
                                     style={{ color: "#FFCD44", paddingTop: 7 }}
                                     size={30}
                                 />
-                            </TouchableOpacity>
+                            </TouchableWithoutFeedback>
                         </View>
 
                         {

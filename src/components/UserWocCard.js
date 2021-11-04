@@ -4,7 +4,7 @@ import i18n from '../locales';
 import * as userStore from '../store/user';
 import * as wocAction from '../actions/woc';
 import { numeralFormat } from '../utilities/number';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import * as wocStore from '../store/woc';
 import * as cacheStore from '../store/cache';
 import opts from '../../config';
@@ -81,7 +81,7 @@ export default class UserWocCard extends Component {
 
     render() {
         return this.state.user ?
-            <TouchableOpacity
+            <TouchableWithoutFeedback
                 onPress={this.openWooCoin}>
                 <View style={{ padding: 20, flexDirection: 'row', alignSelf: 'center' }}>
                     <View style={{ backgroundColor: '#FFCD44', minHeight: 40, borderRadius: 15, flexDirection: 'row', justifyContent: 'center' }}>
@@ -112,7 +112,7 @@ export default class UserWocCard extends Component {
                         </View>
                     </View>
                 </View>
-            </TouchableOpacity>
+            </TouchableWithoutFeedback>
             : null
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Image, TouchableWithoutFeedback } from 'react-native';
 import { Icon } from 'react-native-elements';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { request, PERMISSIONS } from 'react-native-permissions';
@@ -168,7 +168,7 @@ export default class ScanQRPage extends Component {
                                         size={50}
                                     />
                                     <Text style={{ fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: '300', paddingBottom: 20 }}>{this.state.i18n.scanQRPage.already}</Text>
-                                </View> : <TouchableOpacity onPress={this.refresQr}>
+                                </View> : <TouchableWithoutFeedback onPress={this.refresQr}>
                                     <Ionicons
                                         name='camera-reverse'
                                         color='#778beb'
@@ -176,7 +176,7 @@ export default class ScanQRPage extends Component {
                                         style={{ alignSelf: 'center' }}
                                     />
                                     <Text style={{ fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: '300', paddingBottom: 20 }}>{this.state.i18n.scanQRPage[this.state.resultCode]}</Text>
-                                </TouchableOpacity>
+                                </TouchableWithoutFeedback>
                         }
                     </View>
             }
