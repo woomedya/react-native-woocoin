@@ -394,9 +394,9 @@ export default class WalletPage extends Component {
 
                         <View >
                             <TouchableWithoutFeedback onPress={this.showHowEarmInfo}
-                                style={{ padding: 10, top: 5, alignSelf: 'center', alignItems: 'center' }}>
-                                {this.renderEquation()}
-                                <View style={{ alignSelf: 'center', alignItems: 'center' }}>
+                                style={{ alignSelf: 'center', alignItems: 'center' }}>
+                                <View style={{ padding: 10, top: 5, alignSelf: 'center', alignItems: 'center' }}>
+                                    {this.renderEquation()}
                                     <Text style={{ paddingTop: 5, textAlign: 'center', fontSize: 14, color: '#4F4F4F', fontWeight: 'bold' }}>
                                         {this.state.i18n.wallet.howGoldEarnTitle}
                                     </Text>
