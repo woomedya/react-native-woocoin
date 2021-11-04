@@ -169,13 +169,15 @@ export default class ScanQRPage extends Component {
                                     />
                                     <Text style={{ fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: '300', paddingBottom: 20 }}>{this.state.i18n.scanQRPage.already}</Text>
                                 </View> : <TouchableWithoutFeedback onPress={this.refresQr}>
-                                    <Ionicons
-                                        name='camera-reverse'
-                                        color='#778beb'
-                                        size={50}
-                                        style={{ alignSelf: 'center' }}
-                                    />
-                                    <Text style={{ fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: '300', paddingBottom: 20 }}>{this.state.i18n.scanQRPage[this.state.resultCode]}</Text>
+                                    <View>
+                                        <Ionicons
+                                            name='camera-reverse'
+                                            color='#778beb'
+                                            size={50}
+                                            style={{ alignSelf: 'center' }}
+                                        />
+                                        <Text style={{ fontSize: 14, textAlign: 'center', color: '#4F4F4F', fontWeight: '300', paddingBottom: 20 }}>{this.state.i18n.scanQRPage[this.state.resultCode]}</Text>
+                                    </View>
                                 </TouchableWithoutFeedback>
                         }
                     </View>
