@@ -1,4 +1,5 @@
 import * as storeUtil from 'jutore';
+import * as wocStore from './woc';
 
 var store = storeUtil.setScope('woocoin_cache', {
     walletPage: {},
@@ -39,5 +40,17 @@ export const setDefaultValue = () => {
     setWocCard({});
     setScanQRPage({});
 }
+
+wocStore.default.addListener(wocStore.WOC_CHANGED, () => {
+    setWalletPage({
+        ...getWalletPage(),
+        initial: false
+    });
+
+    setWocCard({
+        ...getWocCard(),
+        initial: false
+    });
+});
 
 export default store;
