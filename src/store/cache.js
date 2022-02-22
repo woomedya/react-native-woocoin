@@ -11,7 +11,29 @@ export const WALLET_PAGE = 'walletPage';
 export const WOC_CARD = 'wocCard';
 export const SCAN_QR_PAGE = 'scanQRPage';
 
-export const setWalletPage = (value) => {
+export const setWalletPage = (cache) => {
+    let value = {
+        equationGold: cache.equationGold,
+        equationKey: cache.equationKey,
+        equationWoc: cache.equationWoc,
+        woc: cache.woc,
+        gold: cache.gold,
+        keys: cache.keys,
+        chestWeight: cache.chestWeight,
+        giftChest: cache.giftChest,
+        inviteWocGift: cache.inviteWocGift,
+        inviteConfirmWocGift: cache.inviteConfirmWocGift,
+        miningRequiredGold: cache.miningRequiredGold,
+        miningValue: cache.miningValue,
+        wocSendFee: cache.wocSendFee,
+        coinExchangeValue: cache.coinExchangeValue,
+        coinUnitValue: cache.coinUnitValue,
+        coinUnitLocale: cache.coinUnitLocale,
+        showCoinExchangeValue: cache.showCoinExchangeValue,
+
+        actions: cache.actions,
+        initial: cache.initial
+    };
     store.set(WALLET_PAGE, value);
 }
 

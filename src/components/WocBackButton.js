@@ -41,6 +41,6 @@ export default class WocBackButton extends Component {
             color={this.props.color || 'white'}
             height={30}
             onPress={this.goBack}
-        /> : <WUBackButton navigation={this.props.navigation} />;
+        /> : <WUBackButton size={this.props.size} color={this.props.color} navigation={this.props.navigation} />
     }
 }

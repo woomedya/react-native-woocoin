@@ -1,7 +1,11 @@
 import { request } from './base';
 import * as userStore from '../store/user';
 
+
 let getUserDataWorking = false;
+
+
+
 export const getUserData = async () => {
     if (getUserDataWorking) {
         return await new Promise(res => {
@@ -35,7 +39,15 @@ export const getSettingsData = async () => {
         chestWeight: 0,
         giftChest: 0,
         inviteWocGift: 0,
-        inviteConfirmWocGift: 0
+        inviteConfirmWocGift: 0,
+        miningRequiredGold: 0,
+        miningValue: 0,
+        wocSendFee: 0,
+        equationKey: 0,
+        coinExchangeValue: 0,
+        coinUnitValue: '',
+        coinUnitLocale: '',
+        showCoinExchangeValue: false
     };
 }
 

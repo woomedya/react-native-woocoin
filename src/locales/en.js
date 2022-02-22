@@ -38,10 +38,10 @@ export default {
         send: 'Send',
         sendFriends: 'Send woocoins to your friends.',
         actionsTitle: 'Gold and Energy',
-        invite: 'Invite',
+        invite: 'Invitation',
         inviteText: 'Earn woocoins with your friends.',
-        qrpage: 'Scan QR Code',
-        qrpageText: 'Earn woocoins with your friends.'
+        gift: 'Store',
+        giftText: 'Get gifts with WooCoin.'
     },
     dailyInfo: {
         title: 'Daily Gifts',
@@ -70,18 +70,59 @@ export default {
         notEnoughWoc: 'Your woc balance is insufficient.'
     },
     invite: {
-        invitationQR: 'QR Invitation',
-        inviteFriends: 'Earn WooCoins by inviting your friends. WooCoins are earned for each invitation.',
-        howToWork: 'Every friend who downloads the application, after opening an account, reads this QR code which belongs to you, and earns WooCoin for both you and himself/herself.',
-        wocCount: 'WooCoin Gift'
+        friendInvitation: 'Friend Invitation',
+        inviteFriends: 'Share your invite code with your friends and earn WooCoins by having them enter the code.',
+        wocCount: 'Earn WooCoins For Every Friend That You Invite',
+        copied: 'Friend invite code copied.'
     },
-    scanQRPage: {
-        waiting: 'The process is being checked.',
+    invitation: {
+        errorEnterInvitationCode: 'Please enter the invitation code.',
+        invitationCode: 'Enter invitation code.',
+        confirm: 'Confirm',
+        wocCount: 'Earn WooCoins By Entering a Friend\'s Invite Code',
+        serverErrorMessage: 'There was an error on the server, please try again later.',
+        shareInvitationCode: 'WooCoin Invitation Code',
         success: 'Gift WooCoins has been added to your account.',
-        already: 'The QR code has already been entered in your account or device. You can earn WooCoins by inviting your friends.',
+        already: 'The invitation code has already been entered in your account or device. You can earn WooCoins by inviting your friends.',
         fail: 'Click to try again.',
-        scanInvitationQR: 'Scan QR Invitation',
-        scanFriendsQR: 'By scanning the QR invitation, you and your friend can earn WooCoin once.',
-        earnWocTimeout: 'You cannot repeatedly QR scans. See the waiting time on the gold and energy information screen on the WooCoin page.'
-    }
+        earnWocTimeout: 'You cannot repeatedly enter invitation code. See the waiting time on the gold and energy information screen on the WooCoin page.',
+        mine: 'You cannot enter your own activation code.',
+        success: 'Gift WooCoins has been added to your account.'
+    },
+
+    gift: {
+        title: 'Gifts',
+        count: 'Pieces',
+        woc: 'woc',
+        order: 'Order',
+        cancel: 'Cancel',
+        done: 'Done',
+        notEnoughWoc: 'You do not have enough balance.',
+        notEnoughStock: 'Out of stock for this product.',
+        missingUserInfo: 'You must enter your required gift shipping information.',
+        goEditUserInfo: 'Update'
+    },
+    orderModal: {
+        title: 'Order Detail',
+        giftLabel: 'Product Information',
+        deliveryLabel: 'Delivery Information',
+        confirmLabel: 'Confirmation',
+        confirmText: 'After placing an order, the product price will be deducted from your balance. Orders placed are not canceled and returns are not accepted. Our users with insufficient balance cannot place an order. Users are responsible for any failures caused by incomplete or incorrect information. It is important that you enter your information completely.',
+        orderDone: 'Order Done',
+        buyingError: 'An error occurred while ordering. Please try again.'
+    },
+    orderStatus: {
+        prepare: 'Preparing',
+        ship: 'Sent',
+        delivery: 'Delivered'
+    },
+    editUserInfo: {
+        fullname: 'Fullname',
+        fullnamePlaceholder: 'Enter your fullname...',
+        tcno: 'TC Identity No',
+        tcnoPlaceholder: 'Enter your TC identity no...',
+        iban: 'IBAN',
+        ibanPlaceholder: 'Enter your IBAN...',
+        saveButtonTitle: 'Save'
+    },
 }

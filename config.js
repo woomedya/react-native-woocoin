@@ -6,8 +6,12 @@ export default opts = {
     deviceId: '',
     locales: {},
     lang: 'tr',
+    localesChangeWord: {},
     woouserPublicKey: '',
     tokenTimeout: 20000,
-    siteUrl: 'https://woocoin.woomedya.com.tr',
-    woocoinRouteName: "WooCoin"
+    siteUrl: '',
+    woocoinRouteName: "WooCoin",
+    giftBackgroudColor: '#E21C2F',
+    giftType: {},
+    UserInfoComponent: null
 };

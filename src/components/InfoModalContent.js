@@ -4,9 +4,12 @@ import i18n from '../locales';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import config from '../../config';
 
+
 const energyPng = require('../../assets/energy.png');
 const goldPng = require('../../assets/gold.png');
 const wocPng = require('../../assets/woc.png');
+
+
 
 export default class InfoModalContent extends Component {
     constructor(props) {
@@ -121,12 +124,14 @@ export default class InfoModalContent extends Component {
                     {this.state.i18n.wallet.whatDoesItDoDesc}
                 </Text>
 
-                <TouchableWithoutFeedback
-                    onPress={this.goWooCoinWebSite}>
-                    <Text style={{ paddingTop: 3, fontSize: 14, textAlign: 'center', color: '#3498db', fontWeight: '300' }}>
-                        {this.state.i18n.wallet.woocoincom}
-                    </Text>
-                </TouchableWithoutFeedback>
+                {
+                    config.siteUrl ? <TouchableWithoutFeedback
+                        onPress={this.goWooCoinWebSite}>
+                        <Text style={{ paddingTop: 3, fontSize: 14, textAlign: 'center', color: '#3498db', fontWeight: '300' }}>
+                            {this.state.i18n.wallet.woocoincom}
+                        </Text>
+                    </TouchableWithoutFeedback> : null
+                }
 
                 <View style={{ alignSelf: 'center', paddingTop: 15 }}>
                     <Text style={{ textAlign: 'center', color: '#4F4F4F', fontSize: 24, fontWeight: '500' }}>

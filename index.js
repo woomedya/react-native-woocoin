@@ -6,8 +6,15 @@ import * as userStore from './src/store/user';
 import * as cacheStore from './src/store/cache';
 import WocBackButton_ from './src/components/WocBackButton';
 import * as goldAction from './src/actions/gold';
+import UserInfoComponent from './src/components/UserInfoComponent';
 
-export const config = async ({ serverUrl, publicKey, privateKey, locales, lang, woouserPublicKey, applicationId, deviceId, siteUrl }) => {
+
+
+export const config = async ({
+    serverUrl, publicKey, privateKey, locales, lang, woouserPublicKey, applicationId, deviceId, siteUrl,
+    giftBackgroundColor, giftType, userInfoComponent,
+    localesChangeWord
+}) => {
     opts.serverUrl = serverUrl;
     opts.publicKey = publicKey;
     opts.privateKey = privateKey;
@@ -18,6 +25,11 @@ export const config = async ({ serverUrl, publicKey, privateKey, locales, lang, 
 
     opts.lang = lang;
     opts.locales = locales || {};
+    opts.giftBackgroudColor = giftBackgroundColor || opts.giftBackgroudColor;
+    opts.giftType = giftType || {};
+    opts.UserInfoComponent = userInfoComponent || UserInfoComponent;
+
+    opts.localesChangeWord = localesChangeWord || opts.localesChangeWord;
 
     langStore.setLanguage(lang);
 
@@ -30,6 +42,11 @@ export const config = async ({ serverUrl, publicKey, privateKey, locales, lang, 
 export const setLang = (lang) => {
     opts.lang = lang;
     langStore.setLanguage(lang);
+}
+
+export const setGiftType = (giftType) => {
+    opts.giftType = giftType;
+    langStore.setGiftType(giftType);
 }
 
 export const setSendFee = (value) => {

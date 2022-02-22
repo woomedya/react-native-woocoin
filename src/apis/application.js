@@ -15,3 +15,18 @@ export const getActions = async () => {
         };
     });
 }
+
+export const getGifts = async () => {
+    var data = await request('/application/getgifts', 'application.getgifts', {});
+
+    var lang = langStore.getLanguage();
+
+    return Object.keys(data || {}).map(key => {
+        let x = data[key];
+        return {
+            key,
+            ...x,
+            messageLang: x.message[lang]
+        };
+    });
+}

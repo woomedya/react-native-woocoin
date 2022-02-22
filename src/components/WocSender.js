@@ -6,6 +6,7 @@ import i18n from '../locales';
 import * as langStore from '../store/language';
 import * as wocStore from '../store/woc';
 import * as userApi from '../apis/user';
+import { color } from '../../../../woo/react-native-woogame/src/constants/ThemeStyle';
 import { Alert } from 'react-native';
 import * as wocAction from '../actions/woc';
 

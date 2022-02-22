@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Modal, StyleSheet, Image, View, Text, ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Alert, RefreshControl } from 'react-native';
 import { userAction } from 'react-native-woomobileuser';
 import EntypoIcon from "react-native-vector-icons/Entypo";
-import AntDesignIcon from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 
 import i18n from '../locales';
 import * as userStore from '../store/user';
@@ -19,10 +19,14 @@ import * as pageStore from '../store/page';
 import { Button } from 'react-native-elements';
 import * as wocStore from '../store/woc';
 import * as cacheStore from '../store/cache';
+import * as numberUtil from '../utilities/number';
+
 
 const energyPng = require('../../assets/energy.png');
 const goldPng = require('../../assets/gold.png');
 const wocPng = require('../../assets/woc.png');
+
+
 
 export default class WalletPage extends Component {
     constructor(props) {
@@ -36,10 +40,11 @@ export default class WalletPage extends Component {
 
         this.state = {
             i18n: i18n(),
-            equationGold: cache.equationGold || 0,
-            equationKey: cache.equationKey || 1,
             loading: 0,
             user,
+
+            equationGold: cache.equationGold || 0,
+            equationKey: cache.equationKey || 1,
             equationWoc: cache.equationWoc || 0,
             woc: cache.woc || 0,
             gold: cache.gold || 0,
@@ -48,6 +53,14 @@ export default class WalletPage extends Component {
             giftChest: cache.giftChest || 0,
             inviteWocGift: cache.inviteWocGift || 0,
             inviteConfirmWocGift: cache.inviteConfirmWocGift || 0,
+            miningRequiredGold: cache.miningRequiredGold || 0,
+            miningValue: cache.miningValue || 0,
+            wocSendFee: cache.wocSendFee || 0,
+            coinExchangeValue: cache.coinExchangeValue || 0,
+            coinUnitValue: cache.coinUnitValue || '',
+            coinUnitLocale: cache.coinUnitLocale || '',
+            showCoinExchangeValue: cache.showCoinExchangeValue || false,
+
             showInfo: false,
             showHowEarmInfo: false,
             actions: cache.actions || [],
@@ -105,34 +118,14 @@ export default class WalletPage extends Component {
         });
 
         let cache = this.state;
-        cacheStore.setWalletPage({
-            equationGold: cache.equationGold,
-            equationKey: cache.equationKey,
-            equationWoc: cache.equationWoc,
-            woc: cache.woc,
-            gold: cache.gold,
-            keys: cache.keys,
-            chestWeight: cache.chestWeight,
-            giftChest: cache.giftChest,
-            inviteWocGift: cache.inviteWocGift,
-            inviteConfirmWocGift: cache.inviteConfirmWocGift,
-            actions: cache.actions,
-            initial: cache.initial
-        });
+        cacheStore.setWalletPage(cache);
     }
 
     settingsData = async () => {
         await this.increaseLoading();
         var settingsData = await wocApi.getSettingsData();
         wocStore.setSendFee(settingsData.wocSendFee);
-        await this.decreaseLoading({
-            equationGold: settingsData.equationGold,
-            equationWoc: settingsData.equationWoc,
-            chestWeight: settingsData.chestWeight,
-            giftChest: settingsData.giftChest,
-            inviteWocGift: settingsData.inviteWocGift,
-            inviteConfirmWocGift: settingsData.inviteConfirmWocGift
-        });
+        await this.decreaseLoading(settingsData);
     }
 
     setUserData = async () => {
@@ -255,8 +248,12 @@ export default class WalletPage extends Component {
         pageStore.setPage(pageStore.PAGE_INVITE);
     }
 
-    gotoQRPage = () => {
-        pageStore.setPage(pageStore.PAGE_SCAN_QR);
+    gotoGift = () => {
+        pageStore.setPage(pageStore.PAGE_GIFT);
+    }
+
+    goEditUserInfo = async () => {
+        pageStore.setPage(pageStore.PAGE_EDIT_USER_INFO);
     }
 
     renderEquation = () => {
@@ -269,8 +266,11 @@ export default class WalletPage extends Component {
     }
 
     render() {
-        var wocFontLength = this.state.woc.toString().length;
-        var wocFontSize = wocFontLength > 10 ? 28 : wocFontLength > 8 ? 38 : wocFontLength > 5 ? 48 : 58;
+        let woc = this.state.woc;
+        let wocFontLength = woc.toString().length;
+        let wocNumeral = wocFontLength > 9;
+        let wocFontSize = wocNumeral ? 58 : wocFontLength > 10 ? 28 : wocFontLength > 8 ? 38 : wocFontLength > 6 ? 46 : 58;
+
 
         return <WooadsRewardContainer ref={e => this.wooads = e}>
             <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
@@ -287,9 +287,12 @@ export default class WalletPage extends Component {
                         <View style={{ backgroundColor: '#F6F6F6', borderRadius: 15 }}>
                             <View style={{ flexDirection: 'row', padding: 5 }}>
                                 <View style={{ alignSelf: 'center', padding: 10 }}>
-                                    <Text style={{ textAlign: 'center', color: '#4F4F4F', fontSize: 20, fontWeight: '500' }}>
-                                        {this.state.user.username}
-                                    </Text>
+                                    <TouchableWithoutFeedback
+                                        onPress={this.goEditUserInfo}>
+                                        <Text style={{ textAlign: 'center', color: '#4F4F4F', fontSize: 20, fontWeight: '500' }}>
+                                            {this.state.user.username}
+                                        </Text>
+                                    </TouchableWithoutFeedback>
                                 </View>
 
                                 <View style={{ flex: 1, alignItems: 'flex-end', padding: 5 }}>
@@ -308,27 +311,43 @@ export default class WalletPage extends Component {
                                 <TouchableWithoutFeedback
                                     style={{}}
                                     onPress={this.showInfo}>
-                                    <View style={{ backgroundColor: '#FFCD44', minHeight: 100, borderRadius: 15, flexDirection: 'row', justifyContent: 'center' }}>
-
-                                        <View style={{ justifyContent: 'center' }}>
-                                            <Text style={{ fontSize: wocFontSize, fontWeight: 'bold', color: '#4F4F4F' }}>
-                                                {this.state.woc.toLocaleString()}
-                                            </Text>
-                                        </View>
-                                        <View style={{ justifyContent: 'center', left: 10, alignItems: 'center' }}>
+                                    <View style={{ justifyContent: 'center' }}>
+                                        <View style={{ backgroundColor: '#FFCD44', borderRadius: 15, paddingVertical: 10, flexDirection: 'row', justifyContent: 'center' }}>
                                             <View style={{ justifyContent: 'center' }}>
-                                                <Image resizeMode="contain" source={wocPng} style={{ height: 27, width: 55 }} />
+                                                <Text style={{ fontSize: wocFontSize, fontWeight: 'bold', color: '#4F4F4F' }}>
+                                                    {wocNumeral ? numberUtil.numeralFormat(woc) : woc.toLocaleString()}
+                                                </Text>
                                             </View>
-                                            <Text style={{ fontSize: 20, fontWeight: '500', color: '#4F4F4F' }}>
-                                                {this.state.i18n.wallet.woc}
-                                            </Text>
+                                            <View style={{ justifyContent: 'center', alignItems: 'center', left: 10 }}>
+                                                <View style={{ justifyContent: 'center' }}>
+                                                    <Image resizeMode="contain" source={wocPng} style={{ height: 27, width: 55 }} />
+                                                </View>
+                                                <Text style={{ fontSize: 20, fontWeight: '500', color: '#4F4F4F' }}>
+                                                    {this.state.i18n.wallet.woc}
+                                                </Text>
+                                            </View>
                                         </View>
 
-                                        <FontAwesome
-                                            name="question-circle"
-                                            style={{ position: 'absolute', left: 5, top: 5, color: "#4F4F4F", padding: 5 }}
-                                            size={27}
-                                        />
+                                        {
+                                            this.state.showCoinExchangeValue ?
+                                                <View style={{ position: 'absolute', bottom: -15, alignSelf: 'center' }}>
+                                                    <View style={{ flexDirection: 'row', justifyContent: 'center', backgroundColor: '#FFCD44', borderBottomRightRadius: 15, borderBottomLeftRadius: 15, paddingBottom: 2, paddingHorizontal: 20 }}>
+                                                        <View style={{ justifyContent: 'center' }}>
+                                                            <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#4F4F4F' }}>≈</Text>
+                                                        </View>
+                                                        <View style={{ justifyContent: 'center', paddingLeft: 2 }}>
+                                                            <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#4F4F4F', letterSpacing: 1 }}>
+                                                                {wocNumeral ? numberUtil.numeralFormat(woc * this.state.coinExchangeValue) : numberUtil.concurencyFormat(woc * this.state.coinExchangeValue, this.state.coinUnitLocale)}
+                                                            </Text>
+                                                        </View>
+                                                        <View style={{ justifyContent: 'center', paddingLeft: 0, paddingTop: 2 }}>
+                                                            <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#4F4F4F' }}>
+                                                                {this.state.coinUnitValue}
+                                                            </Text>
+                                                        </View>
+                                                    </View>
+                                                </View> : null
+                                        }
                                     </View>
                                 </TouchableWithoutFeedback>
                             </View>
@@ -419,16 +438,16 @@ export default class WalletPage extends Component {
                                         <View style={{ borderRadius: 15 }}>
                                             <Button
                                                 buttonStyle={{
-                                                    backgroundColor: '#38ada9',
+                                                    backgroundColor: '#778beb',
                                                     borderRadius: 15, paddingVertical: 10,
                                                 }}
                                                 title={
                                                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                                        <Text style={{ color: '#f5f6fa', fontWeight: '500', fontSize: 22, textAlign: 'center' }}>{this.state.i18n.wallet.send}</Text>
-                                                        <Text style={{ color: '#f5f6fa', fontSize: 14, textAlign: 'center' }}>{this.state.i18n.wallet.sendFriends}</Text>
+                                                        <Text style={{ color: '#f5f6fa', fontWeight: '500', fontSize: 22, textAlign: 'center' }}>{this.state.i18n.wallet.gift}</Text>
+                                                        <Text style={{ color: '#f5f6fa', fontSize: 14, textAlign: 'center' }}>{this.state.i18n.wallet.giftText}</Text>
                                                     </View>
                                                 }
-                                                onPress={this.gotoWocSenderPage}
+                                                onPress={this.gotoGift}
                                             />
                                         </View>
                                     </View>
@@ -455,19 +474,20 @@ export default class WalletPage extends Component {
                                         <View style={{ borderRadius: 15 }}>
                                             <Button
                                                 buttonStyle={{
-                                                    backgroundColor: '#778beb',
+                                                    backgroundColor: '#38ada9',
                                                     borderRadius: 15, paddingVertical: 10,
                                                 }}
                                                 title={
                                                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                                                        <Text style={{ color: '#f5f6fa', fontWeight: '500', fontSize: 22, textAlign: 'center' }}>{this.state.i18n.wallet.qrpage}</Text>
-                                                        <Text style={{ color: '#f5f6fa', fontSize: 14, textAlign: 'center' }}>{this.state.i18n.wallet.qrpageText}</Text>
+                                                        <Text style={{ color: '#f5f6fa', fontWeight: '500', fontSize: 22, textAlign: 'center' }}>{this.state.i18n.wallet.send}</Text>
+                                                        <Text style={{ color: '#f5f6fa', fontSize: 14, textAlign: 'center' }}>{this.state.i18n.wallet.sendFriends}</Text>
                                                     </View>
                                                 }
-                                                onPress={this.gotoQRPage}
+                                                onPress={this.gotoWocSenderPage}
                                             />
                                         </View>
                                     </View>
+
                                 </View>
                             </View> : null
 

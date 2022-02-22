@@ -38,10 +38,10 @@ export default {
         send: 'Gönder',
         sendFriends: 'Arkadaşlarınıza woocoin gönderin.',
         actionsTitle: 'Altın ve Enerji',
-        invite: 'Davet Et',
+        invite: 'Davet',
         inviteText: 'Arkadaşlarınızla woocoin kazanın.',
-        qrpage: 'Kare Kod Okut',
-        qrpageText: 'Arkadaşlarınızla woocoin kazanın.'
+        gift: 'Mağaza',
+        giftText: 'WooCoin ile hediyeler alın.'
     },
     dailyInfo: {
         title: 'Günlük Hediyeler',
@@ -70,18 +70,58 @@ export default {
         notEnoughWoc: 'Woc bakiyeniz yetersiz.'
     },
     invite: {
-        invitationQR: 'Kare Kod Davetiyesi',
-        inviteFriends: 'Arkadaşlarınızı davet ederek WooCoin kazanın. Her davetiye için WooCoin kazanılır.',
-        howToWork: 'Uygulamayı indiren her arkadaşınız, hesap açtıktan sonra size ait olan bu kare kodu okutarak, hem size hem de kendisine WooCoin kazandırır.',
-        wocCount: 'WooCoin Hediyesi'
+        friendInvitation: 'Arkadaş Davetiyesi',
+        inviteFriends: 'Arkadaşlarınızla davet kodunuzu paylaşın ve kodu girmelerini sağlayarak WooCoin kazanın.',
+        wocCount: 'Davet Edeceğiniz Her Arkadaşınız İçin\nWooCoin Kazanın',
+        copied: 'Arkadaş davet kodu kopyalandı.',
+        shareInvitationCode: 'WooCoin Davet Kodu'
     },
-    scanQRPage: {
-        waiting: 'İşlem kontrol ediliyor.',
+    invitation: {
+        errorEnterInvitationCode: 'Lütfen davet kodu giriniz.',
+        invitationCode: 'Davet kodu giriniz.',
+        confirm: 'Onayla',
+        wocCount: 'Bir Arkadaşınıza Ait Davet Kodunu Girerek\nWooCoin Kazanın',
+        serverErrorMessage: 'Sunucuda hata oluştu daha sonra tekrar deneyiniz.',
         success: 'Hesabınıza hediye WooCoin\'ler yüklendi.',
-        already: 'Hesabınıza veya cihazınıza kare kod zaten girilmiş. Arkadaşlarınızı davet ederek WooCoin kazanabilirsiniz.',
+        already: 'Hesabınıza veya cihazınıza davet kodu zaten girilmiş. Arkadaşlarınızı davet ederek WooCoin kazanabilirsiniz.',
         fail: 'Tekrar denemek için tıklayınız.',
-        scanInvitationQR: 'Kare Kod Davetiyesi Okut',
-        scanFriendsQR: 'Kare kod davetiyesi okutarak siz ve arkadaşınız bir defa WooCoin kazanabilirsiniz.',
-        earnWocTimeout: 'Peşpeşe kare kod okutması yapamazsınız. WooCoin sayfasındaki altın ve enerji bilgi ekranında bekleme süresine bakınız.'
-    }
+        earnWocTimeout: 'Peşpeşe davet kodu girişi yapamazsınız. WooCoin sayfasındaki altın ve enerji bilgi ekranında bekleme süresine bakınız.',
+        mine: 'Kendinize ait aktivasyon kodunu giremezsiniz.',
+        success: 'Hesabınıza hediye WooCoin\'ler yüklendi.'
+    },
+
+    gift: {
+        count: 'Adet',
+        woc: 'woc',
+        order: 'Sipariş Ver',
+        cancel: 'İptal',
+        done: 'Tamam',
+        notEnoughWoc: 'Yeterli bakiyeniz bulunmamaktadır.',
+        notEnoughStock: 'Bu ürün için stok tükenmiştir.',
+        missingUserInfo: 'Zorunlu hediye gönderim bilgilerinizi girmelisiniz.',
+        goEditUserInfo: 'Güncelle'
+    },
+    orderModal: {
+        title: 'Sipariş Detayı',
+        giftLabel: 'Ürün Bilgileri',
+        deliveryLabel: 'Teslimat Bilgileri',
+        confirmLabel: 'Onay',
+        confirmText: 'Sipariş verdikten sonra ürün bedeli bakiyenizden düşecektir. Verilen siparişler iptal edilmez ve iade kabul edilmez. Yetersiz bakiyesi olan kullanıcılarımız sipariş veremezler. Eksik veya yanlış bilgi verilmesinden doğan aksaklıklardan kullanıcılar sorumludur. Bilgilerinizi eksiksiz girmeniz önemlidir.',
+        orderDone: 'Sipariş Tamamlandı',
+        buyingError: 'Sipariş sırasında bir hata oluştu. Lütfen tekrar deneyiniz.'
+    },
+    orderStatus: {
+        prepare: 'Hazırlanıyor',
+        ship: 'Gönderildi',
+        delivery: 'Teslim Edildi'
+    },
+    editUserInfo: {
+        fullname: 'Ad Soyad',
+        fullnamePlaceholder: 'Ad Soyad giriniz...',
+        tcno: 'TC Kimlik Numarası',
+        tcnoPlaceholder: 'TC Kimlik Numarası giriniz...',
+        iban: 'IBAN',
+        ibanPlaceholder: 'IBAN giriniz...',
+        saveButtonTitle: 'Kaydet'
+    },
 }

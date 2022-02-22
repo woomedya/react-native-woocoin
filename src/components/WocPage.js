@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
+import WUPage from 'react-native-woomobileuser';
+
+
 import i18n from '../locales';
 import * as langStore from '../store/language';
 import * as pageStore from '../store/page';
-import WUPage from 'react-native-woomobileuser';
 import * as userStore from '../store/user';
 import WalletPage from '../components/WalletPage';
 import WocSenderPage from '../components/WocSender';
 import InvitePage from '../components/InvitePage';
-import ScanQRPage from '../components/ScanQRPage';
+import Gift from '../components/Gift';
+import MyOrders from '../components/MyOrders';
+import EditUserInfo from '../components/EditUserInfo';
+
+
 
 export default class WocPage extends Component {
     constructor(props) {
@@ -54,13 +60,23 @@ export default class WocPage extends Component {
         });
     }
 
+    showInfo = () => {
+        this.wallet && this.wallet.showInfo();
+    }
+
+    showMyOrders = () => {
+        pageStore.setPage(pageStore.PAGE_MY_ORDERS);
+    }
+
     render() {
         var page = this.state.page;
         return this.state.user ?
             (page == pageStore.PAGE_WALLET ? <WalletPage ref={r => this.wallet = r} /> :
                 page == pageStore.PAGE_SENDER ? <WocSenderPage /> :
                     page == pageStore.PAGE_INVITE ? <InvitePage /> :
-                        page == pageStore.PAGE_SCAN_QR ? <ScanQRPage /> : null)
+                        page == pageStore.PAGE_GIFT ? <Gift /> :
+                            page == pageStore.PAGE_MY_ORDERS ? <MyOrders /> :
+                                page == pageStore.PAGE_EDIT_USER_INFO ? <EditUserInfo /> : null)
             : <WUPage
                 wellcome={this.state.i18n.wellcome}
                 description={this.state.i18n.description} />
