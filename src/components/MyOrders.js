@@ -87,6 +87,12 @@ export default class MyOrders extends Component {
         </View>
     }
 
+    renderEmptyOrders = () => {
+        return this.state.refreshing ? null : <View style={{ alignItems: 'center', paddingHorizontal, paddingTop: paddingHorizontal }}>
+            <Text style={{ color: '#636e72', fontSize: 14 }}>{this.state.i18n.myOrders.noOrders}</Text>
+        </View>
+    }
+
     render() {
         return <ScrollView
             style={{ backgroundColor: '#FFFFFF', flex: 1 }}
@@ -104,6 +110,7 @@ export default class MyOrders extends Component {
                 initialNumToRender={10}
                 keyExtractor={this.orderKey}
                 showsVerticalScrollIndicator={false}
+                ListEmptyComponent={this.renderEmptyOrders()}
             />
 
             <MyOrderDetailModal ref={r => this.orderModal = r} />

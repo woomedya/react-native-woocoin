@@ -125,4 +125,7 @@ export default {
         ibanPlaceholder: 'Enter your IBAN...',
         saveButtonTitle: 'Save'
     },
+    myOrders: {
+        noOrders: 'You do not have an order.'
+    }
 }

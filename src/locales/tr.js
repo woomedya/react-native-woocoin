@@ -124,4 +124,7 @@ export default {
         ibanPlaceholder: 'IBAN giriniz...',
         saveButtonTitle: 'Kaydet'
     },
+    myOrders: {
+        noOrders: 'Siparişiniz bulunmamaktadır.'
+    }
 }
