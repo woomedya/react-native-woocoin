@@ -96,7 +96,7 @@ export default {
         done: 'Tamam',
         notEnoughWoc: 'Yeterli bakiyeniz bulunmamaktadır.',
         notEnoughStock: 'Bu ürün için stok tükenmiştir.',
-        missingUserInfo: 'Zorunlu hediye gönderim bilgilerinizi girmelisiniz.',
+        missingUserInfo: 'Hediye gönderim için zorunlu bilgileri girmelisiniz.',
         goEditUserInfo: 'Güncelle'
     },
     orderModal: {

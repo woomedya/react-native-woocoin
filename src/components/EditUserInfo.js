@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, TouchableWithoutFeedback, KeyboardAvoidingView } from 'react-native';
-import { Input, Button } from 'react-native-elements';
+import { View, ScrollView, Alert, KeyboardAvoidingView } from 'react-native';
+import { Button } from 'react-native-elements';
 
 
 import { padding } from '../constants/theme';
@@ -42,7 +42,11 @@ export default class EditUserInfo extends Component {
             this.setState({
                 refreshing: false
             }, () => {
-                pageStore.backPage();
+                if (info) {
+                    pageStore.backPage();
+                } else {
+                    Alert.alert("", this.state.i18n.gift.missingUserInfo);
+                }
             });
         });
     }

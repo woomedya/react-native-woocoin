@@ -97,7 +97,7 @@ export default {
         done: 'Done',
         notEnoughWoc: 'You do not have enough balance.',
         notEnoughStock: 'Out of stock for this product.',
-        missingUserInfo: 'You must enter your required gift shipping information.',
+        missingUserInfo: 'You must enter required information for gift sending.',
         goEditUserInfo: 'Update'
     },
     orderModal: {

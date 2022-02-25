@@ -72,7 +72,7 @@ export default class EditUserInfo extends Component {
             iban: (this.state.iban || '').trim()
         };
 
-        return info;
+        return info.fullname && info.tcno && info.iban ? info : null;
     }
 
     render() {
