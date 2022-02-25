@@ -25,8 +25,6 @@ export default {
         awardAdsDesc: '1 enerji almak için bu reklamı görüntüle',
         notFoundRewardTitle: 'Reklam Bulunamadı',
         notFoundRewardDesc: 'Gösterilebilecek reklam bulunamadı, daha sonra tekrar deneyiniz.',
-        logotTitle: 'Çıkış Yap',
-        logoutDesc: 'Çıkış yapmak istiyor musunuz?',
         info: 'Bilgi',
         howEarnTitle: 'Nasıl Kazanırım ?',
         howGoldEarnTitle: 'Altın ve Enerji Nasıl Kazanırım ?',

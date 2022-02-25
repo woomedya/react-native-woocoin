@@ -25,8 +25,6 @@ export default {
         awardAdsDesc: 'View this ad to buy 1 energy',
         notFoundRewardTitle: 'No Ads Found',
         notFoundRewardDesc: 'No ads to show, try again later.',
-        logotTitle: 'Log out',
-        logoutDesc: 'Do you want to log out?',
         info: 'Information',
         howEarnTitle: 'How Do I Win?',
         howGoldEarnTitle: 'How Do I Earn Gold and Energy?',

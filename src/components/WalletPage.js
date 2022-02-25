@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, StyleSheet, Image, View, Text, ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Alert, RefreshControl } from 'react-native';
-import { userAction } from 'react-native-woomobileuser';
+import LogoutButton from 'react-native-woomobileuser/src/components/LogoutButton';
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -97,15 +97,6 @@ export default class WalletPage extends Component {
         this.setState({
             showHowEarmInfo: false
         });
-    }
-
-    logout = () => {
-        Alert.alert(this.state.i18n.wallet.logotTitle,
-            this.state.i18n.wallet.logoutDesc,
-            [
-                { text: this.state.i18n.wallet.ok, onPress: userAction.logout },
-                { text: this.state.i18n.wallet.cancel, style: "cancel" },
-            ]);
     }
 
     refresh = async () => {
@@ -296,14 +287,7 @@ export default class WalletPage extends Component {
                                 </View>
 
                                 <View style={{ flex: 1, alignItems: 'flex-end', padding: 5 }}>
-                                    <TouchableWithoutFeedback
-                                        onPress={this.logout}>
-                                        <EntypoIcon
-                                            name="log-out"
-                                            style={{ color: "#4F4F4F", padding: 5 }}
-                                            size={22}
-                                        />
-                                    </TouchableWithoutFeedback>
+                                    <LogoutButton />
                                 </View>
                             </View>
 
