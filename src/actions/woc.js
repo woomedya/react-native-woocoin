@@ -23,6 +23,11 @@ export const checkUserWoc = async (woc) => {
     return result;
 }
 
+export const checkInvitationId = async (userId) => {
+    var result = await wocApi.checkInvitationId(userId);
+    return result == 'ok';
+}
+
 export const generateWoc = async () => {
     var result = await wocApi.generateWoc();
     wocStore.setChanged();

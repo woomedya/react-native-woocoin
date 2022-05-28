@@ -85,7 +85,8 @@ export default {
         fail: 'Tekrar denemek için tıklayınız.',
         earnWocTimeout: 'Peşpeşe davet kodu girişi yapamazsınız. WooCoin sayfasındaki altın ve enerji bilgi ekranında bekleme süresine bakınız.',
         mine: 'Kendinize ait aktivasyon kodunu giremezsiniz.',
-        success: 'Hesabınıza hediye WooCoin\'ler yüklendi.'
+        success: 'Hesabınıza hediye WooCoin\'ler yüklendi.',
+        invalidCode: 'Geçersiz davet kodu.'
     },
 
     gift: {

@@ -85,7 +85,8 @@ export default {
         fail: 'Click to try again.',
         earnWocTimeout: 'You cannot repeatedly enter invitation code. See the waiting time on the gold and energy information screen on the WooCoin page.',
         mine: 'You cannot enter your own activation code.',
-        success: 'Gift WooCoins has been added to your account.'
+        success: 'Gift WooCoins has been added to your account.',
+        invalidCode: 'Invalid invitation code.'
     },
 
     gift: {

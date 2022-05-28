@@ -15,6 +15,7 @@ const wocPng = require('../../assets/woc.png');
 const ALREADY = 'already';
 const OK = 'ok';
 const KEY_TIMEOUT = 'earnWocTimeout';
+const INVALID_INVITATION_CODE = 'invalidCode';
 const FAIL = 'fail';
 const MINE = 'mine';
 
@@ -57,7 +58,7 @@ export default class InvitePage extends Component {
 
     copyInvitationCode = () => {
         Share.share({
-            message: this.state.user.id,
+            message: opts.invitationCodePrefix + this.state.user.id,
             title: this.state.i18n.invite.shareInvitationCode + ' '
         });
     }
@@ -72,7 +73,7 @@ export default class InvitePage extends Component {
 
     formControl = () => {
         this.setState({
-            enterCodeError: !this.invitationCode
+            enterCodeError: !((this.invitationCode || '').replace(opts.invitationCodePrefix, '')) || this.invitationCode.indexOf(opts.invitationCodePrefix) == -1
         });
     }
 
@@ -89,16 +90,16 @@ export default class InvitePage extends Component {
 
         this.formControl();
 
-        let invitationId = this.invitationCode;
+        let invitationId = this.invitationCode.replace(opts.invitationCodePrefix, '');
         let serverResultCode = '';
 
-        if (invitationId) {
+        if (invitationId && this.invitationCode.indexOf(opts.invitationCodePrefix) > -1) {
             if (invitationId == this.state.user.id) {
                 serverResultCode = MINE;
             } else {
                 let giftWoc = this.state.inviteWocGift;
 
-                let code = (await goldAction.checkInvitationConfirmWoc(opts.deviceId, invitationId)) ? (await goldAction.checkInvitationWoc(invitationId) ? OK : KEY_TIMEOUT) : ALREADY;
+                let code = (await goldAction.checkInvitationConfirmWoc(opts.deviceId, invitationId)) ? (await goldAction.checkInvitationWoc(invitationId) ? (await wocAction.checkInvitationId(invitationId) ? OK : INVALID_INVITATION_CODE) : KEY_TIMEOUT) : ALREADY;
 
                 if (code == OK) {
                     if (await goldAction.generateInvitationWoc(giftWoc)) {
@@ -146,7 +147,7 @@ export default class InvitePage extends Component {
 
                     <TouchableWithoutFeedback onPress={this.copyInvitationCode}>
                         <View style={{ paddingTop: 15, flexDirection: 'row', justifyContent: 'center' }}>
-                            <Text style={{ color: '#f19066', fontWeight: 'bold', fontSize: 18 }}>{this.state.user.id}</Text>
+                            <Text style={{ textAlign: 'center', width: '80%', color: '#f19066', fontWeight: 'bold', fontSize: 18 }}>{opts.invitationCodePrefix + this.state.user.id}</Text>
                             <View style={{ paddingLeft: 5, paddingTop: 2 }}>
                                 <Icon
                                     name='send'

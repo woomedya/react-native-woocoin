@@ -90,3 +90,9 @@ export const checkUserWoc = async (woc) => {
     return data || '';
 }
 
+export const checkInvitationId = async (userId) => {
+    var data = await request('/coinkeytoken/checkinvitationid', 'coinkeytoken.checkinvitationid', {
+        userId
+    });
+    return data || '';
+}

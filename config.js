@@ -13,5 +13,6 @@ export default opts = {
     woocoinRouteName: "WooCoin",
     giftBackgroudColor: '#E21C2F',
     giftType: {},
-    UserInfoComponent: null
+    UserInfoComponent: null,
+    invitationCodePrefix: ''
 };

@@ -12,7 +12,7 @@ import UserInfoComponent from './src/components/UserInfoComponent';
 
 export const config = async ({
     serverUrl, publicKey, privateKey, locales, lang, woouserPublicKey, applicationId, deviceId, siteUrl,
-    giftBackgroundColor, giftType, userInfoComponent,
+    giftBackgroundColor, giftType, userInfoComponent, invitationCodePrefix,
     localesChangeWord
 }) => {
     opts.serverUrl = serverUrl;
@@ -28,6 +28,7 @@ export const config = async ({
     opts.giftBackgroudColor = giftBackgroundColor || opts.giftBackgroudColor;
     opts.giftType = giftType || {};
     opts.UserInfoComponent = userInfoComponent || UserInfoComponent;
+    opts.invitationCodePrefix = invitationCodePrefix || '';
 
     opts.localesChangeWord = localesChangeWord || opts.localesChangeWord;
 
